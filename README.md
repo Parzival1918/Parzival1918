@@ -1,4 +1,12 @@
-### Hi there 👋
+### 🧑 Profile
+
+* **Age:** 21
+* **Student at:** University of Sheffield
+
+### 🎧 Music
+
+* [Tabibito no Uta](https://www.youtube.com/watch?v=QG8UZUahRbI) - Yuiko Ohara
+* [GLBTM (Studio Outtakes)](https://www.youtube.com/watch?v=YiZfLvLU5Jc) - Daft Punk
 
 <!--
 **Parzival1918/Parzival1918** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
