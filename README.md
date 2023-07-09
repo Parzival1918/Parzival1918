@@ -1,4 +1,4 @@
-### 🐍 pip packages
+### 🐍 pip cli programs
 
 * [**wordle-helper**](https://github.com/Parzival1918/WordleHelper): Helps you find the wordle word of the day
 * [**game-of-life**](https://github.com/Parzival1918/Conway-GameOfLife): Conway's game of life in the terminal
