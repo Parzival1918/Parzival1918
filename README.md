@@ -8,7 +8,7 @@ Find them in my also in my PyPI profile [UnstrayCato](https://pypi.org/user/Unst
 ### 🧑 Profile
 
 * **Age:** 21
-* **Student at:** University of Sheffield (3/4 of the way)
+* **Student at:** University of Sheffield (3/4 of the way) MEng Materials Science and Engineering (Research Stream)
 
 ### 🎧 Music
 
