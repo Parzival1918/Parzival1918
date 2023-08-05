@@ -27,6 +27,11 @@ Find them in my also in my PyPI profile [UnstrayCato](https://pypi.org/user/Unst
 * [Tabibito no Uta](https://www.youtube.com/watch?v=QG8UZUahRbI) - Yuiko Ohara
 * [GLBTM (Studio Outtakes)](https://www.youtube.com/watch?v=YiZfLvLU5Jc) - Daft Punk
 
+### 🍿 Movies / Series / Podcasts
+
+* (CAT) [Bricoheroes](https://m.youtube.com/playlist?list=PLHF437Sz2MHoR-3YNtdCX7opSo93wqlGq) - Peyu i Jair Domínguez
+* (CAT) [El Búnquer](https://m.youtube.com/playlist?list=PL5HwsHboiE9ngozgQ1ZkB9X4gnEwUcLR3) - Peyu, Jair Domínguez i Neus Rossell
+
 <!--
 **Parzival1918/Parzival1918** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
