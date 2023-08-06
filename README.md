@@ -21,6 +21,7 @@ Find them in my also in my PyPI profile [UnstrayCato](https://pypi.org/user/Unst
 * **Age:** 21
 * **Nationality:** Catalan
 * **Student at:** University of Sheffield (3/4 of the way) MEng Materials Science and Engineering (Research Stream)
+* **CV**: [Here](CV.pdf)
 
 ### 🎧 Music
 
