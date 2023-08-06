@@ -9,7 +9,7 @@ Find them in my also in my PyPI profile [UnstrayCato](https://pypi.org/user/Unst
 
 ### 🐍 pip packages
 
-* [barcodes_uc](https://github.com/Parzival1918/barcodes-uc): Generate different types of barcodes. For now, only QR codes work.
+* [**barcodes_uc**](https://github.com/Parzival1918/barcodes-uc): Generate different types of barcodes. For now, only QR codes work.
   * Quick install `pip install barcodes-uc`
   * The package also installs the CLI `qrcode` to generate QR codes in the command line
   * This package has been used to create an API, check it here: [https://qrgeneratorapi-1-c9139268.deta.app](https://qrgeneratorapi-1-c9139268.deta.app)
