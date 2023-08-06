@@ -26,7 +26,9 @@ Find them in my also in my PyPI profile [UnstrayCato](https://pypi.org/user/Unst
 I have done a few web APIs using the [fastAPI package](https://fastapi.tiangolo.com) in python and hosted them in [Deta Space](https://deta.space).
 
 * [**qrgenerator-api**](https://qrgeneratorapi-1-c9139268.deta.app): Generate QR codes. It uses the barcodes-uc python package I wrote.
+  * Example: `curl -X 'GET' 'https://qrgeneratorapi-1-c9139268.deta.app/qrdata/testQr' -H 'accept: application/json'`
 * [**bricoheroes-api**](https://bricoheroesapi-1-w6650227.deta.app): Search information about the series Bricoheroes.
+  * Example: `curl -X 'GET' 'https://bricoheroesapi-1-w6650227.deta.app/episodi-aleatori?inclou_extres=false' -H 'accept: application/json'`
 
 ### 🧑 Profile
 
