@@ -18,6 +18,12 @@ Find them in my also in my PyPI profile [UnstrayCato](https://pypi.org/user/Unst
 
 Find them in my also in my PyPI profile [UnstrayCato](https://pypi.org/user/UnstrayCato/)
 
+### 🕸️ Web APIs
+
+I have done a few web APIs using the [fastAPI package](https://fastapi.tiangolo.com) in python and hosted them in [Deta Space](https://deta.space).
+
+* **[qrgenerator-api](https://qrgeneratorapi-1-c9139268.deta.app): Generate QR codes. It uses the barcodes-uc python package I wrote.
+
 ### 🧑 Profile
 
 * **Age:** 21
