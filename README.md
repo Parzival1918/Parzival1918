@@ -15,7 +15,9 @@ Find them in my also in my PyPI profile [UnstrayCato](https://pypi.org/user/Unst
   * This package has been used to create an API, check it here: [https://qrgeneratorapi-1-c9139268.deta.app](https://qrgeneratorapi-1-c9139268.deta.app)
   * An example of a QR code you can generate:
 
-<img src="qr.png" width=25% align="center">
+<p align="center" width=100%>
+  <img src="qr.png" width=35%>
+</p>
 
 Find them in my also in my PyPI profile [UnstrayCato](https://pypi.org/user/UnstrayCato/)
 
