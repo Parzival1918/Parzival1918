@@ -29,7 +29,7 @@ I have done a few web APIs using the [fastAPI package](https://fastapi.tiangolo.
   * Example: `curl -X 'GET' 'https://qrgeneratorapi-1-c9139268.deta.app/qrdata/testQr' -H 'accept: application/json'`
 * [**bricoheroes-api**](https://bricoheroesapi-1-w6650227.deta.app): Search information about the series Bricoheroes.
   * Example: `curl -X 'GET' 'https://bricoheroesapi-1-w6650227.deta.app/episodi-aleatori?inclou_extres=false' -H 'accept: application/json'`
-* [****](https://elbunquerapi-1-n2878604.deta.app): Search infromation about the podcast episodes of El Búnquer from YouTube.
+* [**elbunquer-api**](https://elbunquerapi-1-n2878604.deta.app): Search infromation about the podcast episodes of El Búnquer from YouTube.
   * Example: `curl -X 'GET' 'https://elbunquerapi-1-n2878604.deta.app/info-episodi/aleatori?inclou_extres=false' -H 'accept: application/json'`
 
 ### 🧑 Profile
