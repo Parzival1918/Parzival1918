@@ -1,3 +1,5 @@
+Check my website [pedro-juan-royo.com](https://pedro-juan-royo.com)!
+
 ### 🐍 pip cli programs
 
 * [**wordle-helper**](https://github.com/Parzival1918/WordleHelper): Helps you find the wordle word of the day
@@ -34,7 +36,6 @@ I have done a few web APIs using the [fastAPI package](https://fastapi.tiangolo.
 
 ### 🧑 Profile
 
-* **Age**: 21
 * **Nationality**: Catalan
 * **Student at**: University of Sheffield (3/4 of the way) MEng Materials Science and Engineering (Research Stream)
 * **CV**: [Here](CV.pdf)
@@ -46,7 +47,7 @@ I have done a few web APIs using the [fastAPI package](https://fastapi.tiangolo.
 
 ### 🍿 Movies / Series / Podcasts
 
-* (CAT) [Bricoheroes](https://m.youtube.com/playlist?list=PLHF437Sz2MHoR-3YNtdCX7opSo93wqlGq) - Peyu i Jair Domínguez
+* (CAT) [Bricoheroes](https://m.youtube.com/playlist?list=PLHF437Sz2MHoR-3YNtdCX7opSo93wqlGq) - Peyu i Jair Domínguez 
 * (CAT) [El Búnquer](https://m.youtube.com/playlist?list=PL5HwsHboiE9ngozgQ1ZkB9X4gnEwUcLR3) - Peyu, Jair Domínguez i Neus Rossell
 
 <!--
