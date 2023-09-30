@@ -1,11 +1,20 @@
 Check my website [pedro-juan-royo.com](https://pedro-juan-royo.com)!
 
+<div align="center">
+
+![GitHub followers](https://img.shields.io/github/followers/parzival1918)
+![GitHub User's stars](https://img.shields.io/github/stars/parzival1918)
+
+</div>
+
 ### 🐍 pip cli programs
 
 * [**wordle-helper**](https://github.com/Parzival1918/WordleHelper): Helps you find the wordle word of the day
   * Quick install `pipx install wordle-helper-uc`
 * [**game-of-life**](https://github.com/Parzival1918/Conway-GameOfLife): Conway's game of life in the terminal
   * Quick install `pipx install game-of-life-uc`
+* [**pu-pjr CLIs**](https://github.com/Parzival1918/Personal-Utilities): Utilities that I use for data analysis
+  * Quick install `pipx install pu-pjr`
 
 Find them in my also in my PyPI profile [UnstrayCato](https://pypi.org/user/UnstrayCato/)
 
