@@ -1,9 +1,15 @@
-# Pedro Juan-Royo's website
+# Pedro Juan Royo's website
 
-This is some text I write.
+```{warning} A very important note 🔪
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lacus laoreet non curabitur gravida. Ut tortor pretium viverra suspendisse potenti. Dolor morbi non arcu risus quis varius. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Vitae auctor eu augue ut. Purus semper eget duis at. Auctor urna nunc id cursus metus aliquam eleifend mi. Imperdiet massa tincidunt nunc pulvinar. Orci sagittis eu volutpat odio facilisis mauris. Massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada.
+I'm Catalan (unfortunately Spanish too 🙁) and in there we have two surnames. The first one is my dad's first surname and my second one is my mom's first surname. 
 
-```{note}
-Here's a note that will take the full width
+Therefore, Juan is not my middle name. My two surnames are **Juan** and **Royo**.
+
+I just wanted to say this first. Since I moved to UK to go to uni I have hadquite a few brits asking is Juan is my middle name, and it is something I had never really thought about until I left Barcelona.
+
+Also, what is it with people marrying and the bride taking the groom's surname? That is weird.
+
 ```
+
+Heyo, this is my website! It has a record of everything worth recording that I've done, which is not much for now but hopefully that will change soon 🤡.
