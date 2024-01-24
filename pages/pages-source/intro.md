@@ -1,6 +1,7 @@
 # Pedro Juan Royo's website
 
-```{warning} A very important note 🔪
+```{admonition} A very important note 🔪
+:class: warning
 
 I'm Catalan (unfortunately Spanish too 🙁) and in there we have two surnames. The first one is my dad's first surname and my second one is my mom's first surname. 
 
