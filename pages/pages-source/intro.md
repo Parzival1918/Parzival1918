@@ -1,5 +1,34 @@
 # Pedro Juan Royo's website
 
+::::{grid} 1 2 3 3 
+:class-container: text-center 
+:gutter: 3
+
+:::{grid-item-card} 
+:link: cv 
+:link-type: doc 
+:class-header: bg-light 
+:margin: 4 2 auto auto
+
+Curriculum 📝
+^^^
+
+Check my CV online!
+:::
+
+:::{grid-item-card} 
+:link: contact
+:link-type: doc 
+:class-header: bg-light 
+:margin: 4 2 auto auto
+
+Contact me 📨
+^^^
+
+Do you want to get in contact with me?
+:::
+::::
+
 Heyo, this is my website! It has a record of everything worth recording that I've done, which is not much for now but hopefully that will change soon 🤡.
 
 Some random facts about me (in no particular order):
