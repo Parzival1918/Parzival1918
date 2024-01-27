@@ -13,13 +13,14 @@ Some random facts about me (in no particular order):
 - I have watched *The Office (US)* more than 10 times, and this number can only go up 😎.
 
 ::::{grid} 1 2 2 2
-:gutter: 1
+:gutter: 3
+:margin: 4 4 0 0
 
 :::{grid-item}
 ![my pic](../imgs/my_pic.jpeg)
 :::
 
-:::{grid-item-card}
-Some text
+:::{grid-item}
+*Me eating a giant schnitzel - sometime in 2022*
 :::
 ::::
