@@ -4,6 +4,6 @@
 format: jb-book
 root: pages-source/intro
 chapters:
-- file: pages-source/cv
+- file: pages-source/about
 - file: pages-source/projects
 - file: pages-source/contact

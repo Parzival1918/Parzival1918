@@ -5,14 +5,14 @@
 :gutter: 3
 
 :::{grid-item-card} 
-:link: cv 
+:link: about
 :link-type: doc 
 :margin: 4 2 auto auto
 
-Curriculum 📝
+About me 📝
 ^^^
 
-Check my CV online!
+Read more about me
 :::
 
 :::{grid-item-card} 
