@@ -34,7 +34,7 @@ jobs:
     # Build the book
     - name: Build the book
       run: |
-        rye jupyter-book build pages/
+        rye run jupyter-book build pages/
 
     - name: Setup Pages
       uses: actions/configure-pages@v2
