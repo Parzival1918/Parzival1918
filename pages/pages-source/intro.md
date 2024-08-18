@@ -7,7 +7,6 @@
 :::{grid-item-card} 
 :link: cv 
 :link-type: doc 
-:class-header: bg-light 
 :margin: 4 2 auto auto
 
 Curriculum 📝
@@ -19,7 +18,6 @@ Check my CV online!
 :::{grid-item-card} 
 :link: projects
 :link-type: doc 
-:class-header: bg-light 
 :margin: 4 2 auto auto
 
 Projects 🔨
@@ -31,7 +29,6 @@ Check some projects I have done (can't promise it'll be good tho 😐)
 :::{grid-item-card} 
 :link: contact
 :link-type: doc 
-:class-header: bg-light 
 :margin: 4 2 auto auto
 
 Contact me 📨

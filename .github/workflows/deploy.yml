@@ -9,8 +9,8 @@ on:
     # unrelated files, you can make this run only if a file within that specific
     # folder has been modified.
     #
-    # paths:
-    # - some-subfolder/**
+    paths:
+     - pages/**
 
 # This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
@@ -21,23 +21,20 @@ jobs:
       pages: write  # To push to a GitHub Pages site
       id-token: write # To update the deployment status
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
+
+    - name: Install the latest version of rye
+      uses: eifinger/setup-rye@v4
 
     # Install dependencies
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.11
-
     - name: Install dependencies
       run: |
-        cd pages
-        pip install -r requirements.txt
+        rye sync
 
     # Build the book
     - name: Build the book
       run: |
-        jupyter-book build pages/
+        rye jupyter-book build pages/
 
     - name: Setup Pages
       uses: actions/configure-pages@v2

@@ -1,0 +1,20 @@
+[project]
+name = "pages"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Pedro Juan Royo", email = "pedro.juan.royo@gmail.com" }
+]
+dependencies = [
+    "jupyter-book",
+    "matplotlib",
+    "numpy",
+    "importlib-metadata==4.13.0",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[tool.rye]
+managed = true
+virtual = true
+dev-dependencies = []
