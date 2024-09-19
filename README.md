@@ -9,6 +9,8 @@ Check my website [pedro-juan-royo.com](https://pedro-juan-royo.com)!
 
 ### 🐍 pip cli programs
 
+* [**bibman**](https://github.com/Parzival1918/bibman): Manage bibliography files in bibtex format
+  * Quick install `pipx install bibmancli`
 * [**wordle-helper**](https://github.com/Parzival1918/WordleHelper): Helps you find the wordle word of the day
   * Quick install `pipx install wordle-helper-uc`
 * [**game-of-life**](https://github.com/Parzival1918/Conway-GameOfLife): Conway's game of life in the terminal
