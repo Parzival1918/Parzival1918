@@ -1,17 +1,13 @@
 ---
-
 authors:
   - pedro
 date: 2025-04-03
-
+categories:
+  - Search
+  - Performance
+draft: true
 ---
 
-# First post
+# Rust for computational chemists
 
-Some text
 
-```rust
-fn test() -> () {
-    let a = String::new();
-}
-```
