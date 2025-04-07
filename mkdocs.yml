@@ -38,11 +38,16 @@ plugins:
 nav:
   - index.md
   - about.md
+  - cv.md
+  - projects.md
   - Blog:
     - blog/index.md
   - contact.md
 
 markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
   - tables
   - pymdownx.highlight:
       anchor_linenums: true

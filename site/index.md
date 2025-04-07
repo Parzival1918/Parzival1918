@@ -1,3 +1,9 @@
+---
+hide:
+  - navigation
+  - toc
+---
+
 # Welcome
 
 Hello and welcome to my website!
@@ -11,6 +17,22 @@ Hello and welcome to my website!
     Read more about who I am and things I've done.
 
     [:octicons-arrow-right-24: About](about.md)
+
+-   :fontawesome-solid-graduation-cap:{ .lg .middle } __Check my CV__
+
+    ---
+
+    See my achievements and skills.
+
+    [:octicons-arrow-right-24: CV](cv.md)
+
+-   :material-tools:{ .lg .middle } __See my projects__
+
+    ---
+
+    The projects I have embarked on.
+
+    [:octicons-arrow-right-24: Projects](projects.md)
 
 -   :fontawesome-solid-blog:{ .lg .middle } __Read my blog posts__
 
