@@ -13,6 +13,8 @@ theme:
     - navigation.expand
     - navigation.top
     - navigation.indexes
+    - content.code.copy
+    - content.code.select
   palette:
     # Palette toggle for light mode
     - scheme: default
@@ -29,7 +31,9 @@ theme:
       primary: lime
 
 plugins:
-  - blog
+  - blog:
+      post_excerpt: required
+  - search
 
 nav:
   - index.md
@@ -39,6 +43,7 @@ nav:
   - contact.md
 
 markdown_extensions:
+  - tables
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
