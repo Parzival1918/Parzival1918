@@ -1,0 +1,14 @@
+livereload: true
+
+url: "https://parzival1918.github.io"
+baseurl: "/Parzival1918"
+
+defaults:
+- scope:
+    path: ""
+  values:
+    layout: "default"
+# - scope:
+#     path: "member-pages" 
+#   values:
+#     layout: "member_page"

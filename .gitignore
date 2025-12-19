@@ -1,4 +1,2 @@
-__pycache__
-pages/_build
-.venv
-build/
+.jekyll-cache
+_site
