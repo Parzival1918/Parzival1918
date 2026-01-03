@@ -1,3 +1,5 @@
+name: Build and Deploy Jekyll page
+
 # Only run this when the main branch changes
 on:
   push:
@@ -6,7 +8,7 @@ on:
 
 # This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
-  deploy-book:
+  build-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write  # To push a branch 
@@ -15,18 +17,23 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install the latest version of rye
-      uses: eifinger/setup-rye@v4
+    # Sets up the Ruby environment needed to build Jekyll
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.4' # Specify your desired Ruby version check Jekyll requirements
+        bundler-cache: true # Caches gems for faster builds
 
-    # Install dependencies
-    - name: Install dependencies
-      run: |
-        rye sync
+    # Installs Jekyll and other dependencies defined in Gemfile
+    - name: Install Dependencies
+      run: bundle install
 
-    # Build the book
-    - name: Build the book
+    # Builds the Jekyll site
+    - name: Build Site
       run: |
-        rye run mkdocs build
+        bundle exec jekyll build
+      env:
+        JEKYLL_ENV: production # Ensures production configuration is used
 
     - name: Setup Pages
       uses: actions/configure-pages@v5
@@ -35,7 +42,8 @@ jobs:
       uses: actions/upload-pages-artifact@v3
       with:
         # Upload entire repository
-        path: 'build'
+        path: '_site'
+
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
