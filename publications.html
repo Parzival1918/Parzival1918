@@ -3,3 +3,28 @@ title: Publications
 ---
 
 <h1>Publications</h1>
+
+{% for pub in site.data.publications %}
+<div class="card hoverable">
+  <div class="card-body">
+    <h5 class="card-title">{{ pub.title }}</h5>
+    <p class="text-secondary mb-1">
+      {{ pub.authors | join: ", " }} ({{ pub.date }})
+    </p>
+    <p class="mb-1"><em>{{ pub.journal }}</em></p>
+    <p class="mb-2">DOI: <a href="{{ pub.url }}" target="_blank">{{ pub.doi }}</a></p>
+    <div class="d-grid gap-2 d-md-flex justify-content-end">
+    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#abstract-{{ forloop.index }}" aria-expanded="false" aria-controls="abstract-{{ forloop.index }}">
+      Show Abstract
+    </button>
+    </div>
+    <div class="collapse mt-2" id="abstract-{{ forloop.index }}">
+      <p>
+        {{ pub.abstract }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<br>
+{% endfor %}
