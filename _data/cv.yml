@@ -1,26 +1,40 @@
-- experience:
+experience:
   - position: "Society Treasurer"
     location: "University of Sheffield"
     start_date: "October 2023"
     end_date: "May 2024"
-    details: |
+    details:
       - Orchid Society treasurer at The University of Sheffield.
-- Education:
+education:
   - degree: "PhD in Computational Chemistry"
     institution: "University of Southampton"
     start_date: "October 2024"
     end_date: "Present"
-    details: |
+    details:
       - Researching the application of Monte Carlo threshold algorithms to crystal structure prediction.
   - degree: "MEng in Materials Science & Engineering"
     institution: "University of Sheffield"
     start_date: "September 2020"
     end_date: "June 2024"
-    details: |
+    details:
       - Graduated with First Class Honours.
-      - Relevant coursework: Computational Materials Science, Thermodynamics, and Materials Characterization Techniques.
-- honours_awards:
+      - "Relevant coursework: Computational Materials Science, Metallurgy, Characterization Techniques."
+honours_awards:
   - title: "Mappin Medal and Premium"
     institution: "University of Sheffield"
     date: "July 2024"
     details: "Prize is awarded to ten undergraduate students annually, in honour of the late Sir Frederick Mappin, Bart. It is given to students who have shown great distinction, and are in the final year of study for an undergraduate programme offered by the Faculty of Engineering. All prize winners receive a medal and a monetary sum."
+skills:
+  - name: "Programming Languages"
+    details: "Python, Rust"
+  - name: "Software & Tools"
+    details: "Git, Jupyter Notebooks, LaTeX, Typst"
+Languages:
+  - name: "Catalan"
+    level: "Native 🗣️"
+  - name: "Spanish"
+    level: "Native 🗣️"
+  - name: "English"
+    level: "Work Proficiency 💼"
+  - name: "Turkish"
+    level: "Baby 🐣"
