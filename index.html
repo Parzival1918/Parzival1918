@@ -9,3 +9,8 @@ title: Home
 </div>
 
 <p class="mb-0">Welcome to my personal website! Here, you can find information about my research, publications, and academic journey. Feel free to explore the different sections to learn more about me.</p>
+
+<div class="d-grid gap-2 col-6 col-md-3 mx-auto pt-4">
+  <button class="btn btn-primary mb-2" type="button" onclick="location.href='{{ '/about' | absolute_url }}'">About me</button>
+  <button class="btn btn-primary" type="button" onclick="location.href='{{ '/publications' | absolute_url }}'">Publications</button>
+</div>
