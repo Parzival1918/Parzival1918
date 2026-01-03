@@ -1,0 +1,10 @@
+- title: "From Crystal Structure Prediction to Polymorphic Behaviour: Monte Carlo Threshold Mapping of Crystal Energy Landscapes"
+  authors:
+    - "Pedro Juan Royo"
+    - "Graeme M. Day"
+  date: "2025"
+  journal: "ChemRXiv"
+  doi: "10.26434/chemrxiv-2025-mx2tl-v2"
+  url: "https://doi.org/10.26434/chemrxiv-2025-mx2tl-v2"
+  abstract: |
+    Crystal structure prediction has developed into a valuable tool for anticipating the likely crystalline arrangement that a molecule will adopt, with applications in materials discovery and polymorph screening. Although powerful, crystal structure prediction is usually limited to locating the local minima of the crystal energy surface. We demonstrate how, by mapping the energy barriers between structures, applying the Monte Carlo threshold algorithm provides a richer description of the crystal energy landscape which allows us to rationalize the differences in experimental conditions under which different crystal polymorphs are observed. As a demonstration, we apply the method to three polymorphic polycyclic aromatic hydrocarbons, phenanthrene, pyrene, and perylene.

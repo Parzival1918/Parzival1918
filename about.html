@@ -1,0 +1,117 @@
+---
+title: About
+---
+
+<h1>About Me</h1>
+
+<p class="mb-0 pb-4">Hello! I'm Pedro Juan Royo, a PhD student in Computational Chemistry at the Day Group in Southampton (UK). I hold a Master of Engineering in Materials Science & Engineering. My research focuses on using the Monte Carlo threshold algorithm to explore the crystal packing energy landscapes of molecular crystals, and see how we can use this information in a crystal structure prediction workflow.</p>
+
+<p class="mb-0 pb-4">In addition to my research, I have a strong interest in scientific programming and open-source software development. During my time in the <a href="{{ site.data.links.day-group }}" target="_blank">Day Group</a> I have contributed to the <a href="{{ site.data.links.mol-cspy }}" target="_blank">mol-CSPy</a> code and lead the group meetings to talk about the code development. Some of my other projects are in my <a href="{{ site.data.links.social.github }}" target="_blank">GitHub</a>.</p>
+
+<div class="mb-3 d-flex justify-content-center">
+    <p class="me-3  my-auto"><span class="align-middle">Show content:</span></p>
+    <div class="btn-group" role="group">
+        <button type="button" class="btn btn-secondary active" id="relevant-btn">Relevant</button>
+        <button type="button" class="btn btn-secondary" id="all-btn">All</button>
+    </div>
+</div>
+
+<style>
+    .content-non-relevant {
+        display: none;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const relevantBtn = document.getElementById('relevant-btn');
+        const allBtn = document.getElementById('all-btn');
+        const nonRelevantItems = document.querySelectorAll('.content-non-relevant');
+
+        relevantBtn.addEventListener('click', function() {
+            relevantBtn.classList.add('active');
+            allBtn.classList.remove('active');
+            nonRelevantItems.forEach(item => item.style.display = 'none');
+        });
+
+        allBtn.addEventListener('click', function() {
+            allBtn.classList.add('active');
+            relevantBtn.classList.remove('active');
+            nonRelevantItems.forEach(item => item.style.display = 'block');
+        });
+    });
+</script>
+
+<h3>Work Experience</h3>
+
+{% for work in site.data.cv.experience %}
+
+<div class="{% if work.relevant == false %} content-non-relevant{% endif %}">
+    <div class="p-3 hoverable border rounded-3">
+        <h5 class="mb-1">{{ work.position }} - {{ work.location }}</h5>
+        <p class="text-secondary mb-1">{{ work.start_date }} - {{ work.end_date }}</p>
+        <ul class="mb-0">
+            {% for detail in work.details %}
+            <li>{{ detail }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <br>
+</div>
+
+{% endfor %}
+
+<div class="row">
+    <h3>Skills</h3>
+    {% for skill in site.data.cv.skills %}
+    <div class="col-12 col-sm-6 mb-3 {% if skill.relevant == false %} content-non-relevant{% endif %}">
+        <div class="p-3 hoverable border rounded-3">
+            <h5 class="mb-1">{{ skill.name }}</h5>
+            <p class="mb-0">{{ skill.details }}</p>
+        </div>
+    </div>
+    {% endfor %}
+    <h3>Languages</h3>
+    {% for lang in site.data.cv.Languages %}
+    <div class="col-12 col-sm-6 mb-3 {% if lang.relevant == false %} content-non-relevant{% endif %}">
+        <div class="p-3 hoverable border rounded-3">
+            <h5 class="mb-1">{{ lang.name }}</h5>
+            <p class="mb-0">{{ lang.level }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<h3>Education</h3>
+
+{% for edu in site.data.cv.education %}
+
+<div class="{% if edu.relevant == false %} content-non-relevant{% endif %}">
+    <div class="p-3 hoverable border rounded-3">
+        <h5 class="mb-1">{{ edu.degree }} - {{ edu.institution }}</h5>
+        <p class="text-secondary mb-1">{{ edu.start_date }} - {{ edu.end_date }}</p>
+        <ul class="mb-0">
+            {% for detail in edu.details %}
+            <li>{{ detail }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <br>
+</div>
+
+{% endfor %}
+
+<h3>Honours & Awards</h3>
+
+{% for award in site.data.cv.honours_awards %}
+
+<div class="{% if award.relevant == false %} content-non-relevant{% endif %}">
+    <div class="p-3 hoverable border rounded-3">
+        <h5 class="mb-1">{{ award.title }} - {{ award.institution }}</h5>
+        <p class="text-secondary mb-1">{{ award.date }}</p>
+        <p class="mb-0">{{ award.details }}</p>
+    </div>
+    <br>
+</div>
+
+{% endfor %}
