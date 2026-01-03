@@ -12,5 +12,6 @@ title: Home
 
 <div class="d-grid gap-2 col-6 col-md-3 mx-auto pt-4">
   <button class="btn btn-primary mb-2" type="button" onclick="location.href='{{ '/about' | absolute_url }}'">About me</button>
-  <button class="btn btn-primary" type="button" onclick="location.href='{{ '/publications' | absolute_url }}'">Publications</button>
+  <button class="btn btn-primary" type="button" onclick="location.href='{{ '/publications' | absolute_url }}'">Publications <span class="badge text-bg-secondary">{{ site.data.publications | size }}</span></button>
+  <button class="btn btn-primary mt-2" type="button" onclick="location.href='{{ '/blog' | absolute_url }}'">Blog <span class="badge text-bg-secondary">{{ site.data.blog | size }}</span></button>
 </div>
