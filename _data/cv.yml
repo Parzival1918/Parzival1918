@@ -3,9 +3,45 @@ experience:
     location: "University of Sheffield"
     start_date: "October 2023"
     end_date: "May 2024"
-    relevant: true
+    relevant: false
     details:
       - Orchid Society treasurer at The University of Sheffield.
+  - position: Student Advisor
+    location: "University of Sheffield, Digital Innovation Zone"
+    start_date: "November 2022"
+    end_date: "May 2023"
+    relevant: false
+    details:
+      - I was a student advisor at the Digital Innovation Zone. A place in the university made in collaboration with Siemens, in order to teach students digital skills (CAD, 3D modelling, etc.).
+  - position: Student Representative in Staff Student Committee
+    location: "University of Sheffield"
+    start_date: "October 2022"
+    end_date: "May 2023"
+    relevant: false
+    details:
+      - I represented the students of the 3rd year in the MRes course in Material Sciences and Engineering.
+  - position: Society President
+    location: "University of Sheffield"
+    start_date: "June 2022"
+    end_date: "May 2023"
+    relevant: false
+    details:
+      - President of the Catalan Society.
+  - position: SURE Scheme Summer Internship
+    location: "University of Sheffield"
+    start_date: "June 2022"
+    end_date: "July 2022"
+    relevant: true
+    details:
+      - Worked with Dr Julian Dean and Prof Derek Sinclar to analyse the impedance response of BaTiO3 under different conditions. 
+      - All the coding was done in MATLAB.
+  - position: Summer Internship
+    location: Institut Català de Nanosciència i Nanotecnologia (ICN2)
+    start_date: July 2019
+    end_date: August 2019
+    relevant: true
+    details:
+      - Worked in the group led by Victor Puntes to develop core-shell silica-polystyrene nanoparticles to study the impact of nanoplastics in living tissue.
 education:
   - degree: "PhD in Computational Chemistry"
     institution: "University of Southampton"
@@ -22,12 +58,43 @@ education:
     details:
       - Graduated with First Class Honours.
       - "Relevant coursework: Computational Materials Science, Metallurgy, Characterization Techniques."
+      - "Final Year Project: on the analysis of growth and dissolution mechanisms of potassium nitrate and potassium chloride using molecular dynamics simulations, under the supervision of Dr. Colin Freeman."
 honours_awards:
   - title: "Mappin Medal and Premium"
     institution: "University of Sheffield"
     date: "July 2024"
-    relevant: true
+    relevant: false
     details: "Prize is awarded to ten undergraduate students annually, in honour of the late Sir Frederick Mappin, Bart. It is given to students who have shown great distinction, and are in the final year of study for an undergraduate programme offered by the Faculty of Engineering. All prize winners receive a medal and a monetary sum."
+  - title: Sheffield Metallurgical and Engineering Association Hatfield Memorial Prize in Metallurgy
+    institution: "University of Sheffield"
+    date: August 2022
+    relevant: false
+    details: This prize is awarded once annually for the best examination performance, by a second-year undergraduate studying for a Bachelor or Master of Engineering degree in either Metal or Materials Science and Engineering.
+  - title: Distinction and Best Pitch for Funding for Engineering You Are Hired
+    institution: "University of Sheffield"
+    date: July 2022
+    relevant: false
+    details: Awarded for the group work on developing a nuclear powered desalination plant for a remote island in the pacific.
+  - title: Sir Harold West Award
+    institution: "University of Sheffield"
+    date: July 2021
+    relevant: false
+    details: Award given due to personal and academic performance during Level 1 of the Materials Science and Engineering degree.
+  - title: The Joe Hemmant Award
+    institution: "University of Sheffield"
+    date: June 2021
+    relevant: false
+    details: Mr Joe Hemmant, an alumni of the Department of Materials Science and Engineering generously donates to two first year students on the basis of their entry grades into the Department, and continued performance after the first examination period.
+  - title: CiMs-Cellex
+    institution: "Cellex Foundation"
+    date: May 2018
+    relevant: true
+    details: CiMs-Cellex is a very prestigious scholarship that pays the last two years of High School in Aula Escola Europea to course International Baccalaureate.
+  - title: HP Codewars
+    institution: "Hewlett-Packard"
+    date: May 2017
+    relevant: true
+    details: 1st place in the 2017 HP Codewars competition in Sant Cugat, Spain. 12th place in the HP Codewars Programming Competition in Houston, Texas, the following year.
 skills:
   - name: "Programming Languages"
     details: "Python, Rust"
@@ -47,4 +114,4 @@ Languages:
     relevant: true
   - name: "Turkish"
     level: "Baby 🐣"
-    relevant: false
+    relevant: true

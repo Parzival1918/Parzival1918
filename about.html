@@ -46,17 +46,18 @@ title: About
 
 {% for work in site.data.cv.experience %}
 
-<div class="p-3 hoverable border rounded-3 {% if work.relevant == false %} content-non-relevant{% endif %}">
-    <h5 class="mb-1">{{ work.position }} - {{ work.location }}</h5>
-    <p class="text-secondary mb-1">{{ work.start_date }} - {{ work.end_date }}</p>
-    <ul class="mb-0">
-        {% for detail in work.details %}
-        <li>{{ detail }}</li>
-        {% endfor %}
-    </ul>
+<div class="{% if work.relevant == false %} content-non-relevant{% endif %}">
+    <div class="p-3 hoverable border rounded-3">
+        <h5 class="mb-1">{{ work.position }} - {{ work.location }}</h5>
+        <p class="text-secondary mb-1">{{ work.start_date }} - {{ work.end_date }}</p>
+        <ul class="mb-0">
+            {% for detail in work.details %}
+            <li>{{ detail }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <br>
 </div>
-
-<br>
 
 {% endfor %}
 
@@ -85,17 +86,18 @@ title: About
 
 {% for edu in site.data.cv.education %}
 
-<div class="p-3 hoverable border rounded-3 {% if edu.relevant == false %} content-non-relevant{% endif %}">
-    <h5 class="mb-1">{{ edu.degree }} - {{ edu.institution }}</h5>
-    <p class="text-secondary mb-1">{{ edu.start_date }} - {{ edu.end_date }}</p>
-    <ul class="mb-0">
-        {% for detail in edu.details %}
-        <li>{{ detail }}</li>
-        {% endfor %}
-    </ul>
+<div class="{% if edu.relevant == false %} content-non-relevant{% endif %}">
+    <div class="p-3 hoverable border rounded-3">
+        <h5 class="mb-1">{{ edu.degree }} - {{ edu.institution }}</h5>
+        <p class="text-secondary mb-1">{{ edu.start_date }} - {{ edu.end_date }}</p>
+        <ul class="mb-0">
+            {% for detail in edu.details %}
+            <li>{{ detail }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <br>
 </div>
-
-<br>
 
 {% endfor %}
 
@@ -103,12 +105,13 @@ title: About
 
 {% for award in site.data.cv.honours_awards %}
 
-<div class="p-3 hoverable border rounded-3 {% if award.relevant == false %} content-non-relevant{% endif %}">
-    <h5 class="mb-1">{{ award.title }} - {{ award.institution }}</h5>
-    <p class="text-secondary mb-1">{{ award.date }}</p>
-    <p class="mb-0">{{ award.details }}</p>
+<div class="{% if award.relevant == false %} content-non-relevant{% endif %}">
+    <div class="p-3 hoverable border rounded-3">
+        <h5 class="mb-1">{{ award.title }} - {{ award.institution }}</h5>
+        <p class="text-secondary mb-1">{{ award.date }}</p>
+        <p class="mb-0">{{ award.details }}</p>
+    </div>
+    <br>
 </div>
-
-<br>
 
 {% endfor %}
