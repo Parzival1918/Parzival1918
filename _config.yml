@@ -1,7 +1,6 @@
 livereload: true
 
 url: "https://naujordep.com"
-baseurl: "/"
 
 defaults:
 - scope:
