@@ -1,7 +1,7 @@
 livereload: true
 
-url: "https://parzival1918.github.io"
-baseurl: "/Parzival1918"
+url: "https://naujordep.com"
+baseurl: "/"
 
 defaults:
 - scope:
