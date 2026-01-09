@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<div class="border rounded pt-2 px-3 shaded">
+{% assign post = site.data.blog | where: "title", page.title | first %}
+<h1>{{ post.title }}</h1>
+<p class="text-secondary mb-2">{{ post.date }}</p>
+{% for tag in post.tags %}
+<p class="badge text-bg-secondary mb-0">{{ tag }}</p>    
+{% endfor %}
+<hr/>
+<p class="mb-3">{{ post.short_description }}</p>
+</div>
+
+{{ content }}

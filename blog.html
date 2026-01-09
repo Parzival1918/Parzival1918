@@ -1,0 +1,28 @@
+---
+title: Blog
+---
+
+<h1>Blog</h1>
+
+{% for post in site.data.blog %}
+
+<div class="card hoverable">
+  <div class="card-body">
+    <h5 class="card-title">{{ post.title }}
+      {% for tag in post.tags %}
+      <span class="badge text-bg-secondary">{{ tag }}</span>    
+      {% endfor %}
+    </h5>
+    <p class="text-secondary mb-2">{{ post.date }}</p>
+    <p class="mb-3">{{ post.short_description }}</p>
+    <div class="d-grid gap-2 d-md-flex justify-content-end">
+    <button class="btn btn-secondary" type="button" onclick="location.href='{{ '/blog/' | append: post.file | absolute_url }}'">Read More</button>
+    </div>
+  </div>
+</div>
+
+{% else %}
+
+<p>No entries yet!</p>
+
+{% endfor %}
