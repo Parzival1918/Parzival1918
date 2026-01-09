@@ -7,3 +7,7 @@ defaults:
     path: ""
   values:
     layout: "default"
+- scope:
+    path: "blog/" 
+  values:
+    layout: "blog_post"
