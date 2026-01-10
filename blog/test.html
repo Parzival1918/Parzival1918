@@ -1,3 +1,25 @@
 ---
 title: Entry 1
 ---
+
+<canvas id="myCanvas" width="500" height="500" ></canvas>
+
+
+<script src="{{ '/assets/js/personal/graphics.js' | absolute_url }}"></script>
+<script>
+    const draw = new DrawingTool(myCanvas);
+    draw.drawPoint(0, 0);
+    draw.drawPoint(50, 70);
+
+    const projection = new Draw3DProjection(myCanvas);
+    projection.drawPoint(0, 0);
+    projection.drawPoint(0.5, 0);
+    projection.drawPoint(-0.5, 0);
+    projection.drawPoint(0, 0.5);
+
+    const coords = new CoordSystem(new Range(-1, 1), new Range(-1, 1));
+    console.log(coords.toCanvasCoords(myCanvas, new Point(0, 0)));
+    console.log(coords.toCanvasCoords(myCanvas, new Point(0, 1)));
+    console.log(coords.toCanvasCoords(myCanvas, new Point(0, -1)));
+    console.log(coords.toCanvasCoords(myCanvas, new Point(0, 2)));
+</script>
