@@ -13,6 +13,9 @@ title: Publications
     </p>
     <p class="mb-1"><em>{{ pub.journal }}</em></p>
     <p class="mb-2">DOI: <a href="{{ pub.url }}" target="_blank">{{ pub.doi }}</a></p>
+    {% if pub.preprint_url %}
+    <p class="mb-2">Preprint: <a href="{{ pub.preprint_url }}" target="_blank">{{ pub.preprint_doi }}</a></p>
+    {% endif %}
     <div class="d-grid gap-2 d-md-flex justify-content-end">
     <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#abstract-{{ forloop.index }}" aria-expanded="false" aria-controls="abstract-{{ forloop.index }}">
       Show Abstract
