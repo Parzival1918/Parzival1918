@@ -35,14 +35,24 @@ class CoordSystem {
 
     toCanvasCoords(canvas, point) {
         // Point's input coordinates are relative to rangeX and rangeY.
-        var point = this.projection(point);
-        const fracX = (point.x - this.rangeX.min) / this.rangeX.diff;
+        var pointP = this.projection(point);
+        const fracX = (pointP.x - this.rangeX.min) / this.rangeX.diff;
         const canvasX = fracX * canvas.width;
-        const fracY = 1 - (point.y - this.rangeY.min) / this.rangeY.diff;
+        const fracY = 1 - (pointP.y - this.rangeY.min) / this.rangeY.diff;
         const canvasY = fracY * canvas.height;
 
         return new Point(canvasX, canvasY);
     }
+}
+
+function centroid(points) {
+    var centroid = new Point(0., 0., 0.);
+    for (var i = 0; i < points.length; i++) {
+        centroid.x += points[i].x;
+        centroid.y += points[i].y;
+        centroid.z += points[i].z;
+    }
+    return new Point(centroid.x / points.length, centroid.y / points.length, centroid.z / points.length)
 }
 
 class DrawToScreen {

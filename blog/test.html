@@ -6,6 +6,7 @@ title: Entry 1
 
 
 <script src="{{ '/assets/js/personal/graphics.js' | absolute_url }}"></script>
+<script src="{{ '/assets/js/decimal.js' | absolute_url }}"></script>
 <script>
     const coords = new CoordSystem(new Range(-1, 1), new Range(-1, 1));
     console.log(coords.toCanvasCoords(myCanvas, new Point(0, 0)));
@@ -33,6 +34,16 @@ title: Entry 1
         return new Point(x, point.y, z);
     }
 
+    function rotateYaroundP(point, angle, rotationPoint) {
+        const cosA = Math.cos(angle);
+        const sinA = Math.sin(angle);
+        const offsetX = point.x - rotationPoint.x;
+        const offsetZ = point.z - rotationPoint.z;
+        const x = offsetX * cosA - offsetZ * sinA + rotationPoint.x;
+        const z = offsetX * sinA + offsetZ * cosA + rotationPoint.z;
+        return new Point(x, point.y, z);
+    }
+
     function rotateZ(point, angle) {
         const cosA = Math.cos(angle);
         const sinA = Math.sin(angle);
@@ -41,16 +52,45 @@ title: Entry 1
         return new Point(x, y, point.z);
     }
 
+    function rotateZaroundP(point, angle, rotationPoint) {
+        const cosA = Math.cos(angle);
+        const sinA = Math.sin(angle);
+        const offsetX = point.x - rotationPoint.x;
+        const offsetY = point.y - rotationPoint.y; 
+        const x = offsetX * cosA - offsetY * sinA + rotationPoint.x;
+        const y = offsetX * sinA + offsetY * cosA + rotationPoint.y;
+        const newP = new Point(x, y, point.z);
+        console.log(newP); 
+        return newP;
+    }
+
+    function round(x) {
+        return Math.round(x * 10000) / 10000;
+    }
+
+    function rotateXaroundP(point, angle, rotationPoint) {
+        const cosA = new Decimal(angle).cosine();
+        const sinA = new Decimal(angle).sine();
+        const offsetY = new Decimal(point.y).minus(rotationPoint.y);
+        const offsetZ = new Decimal(point.z).minus(rotationPoint.z);
+        // console.log(offsetY, offsetZ);
+        const y = offsetY.mul(cosA).minus(offsetZ.times(sinA)).plus(rotationPoint.y);
+        const z = offsetY.times(sinA).plus(offsetZ.times(cosA)).plus(rotationPoint.z);
+        const newP = new Point(point.x, y.toNumber(), z.toNumber());
+        // console.log(newP); 
+        return newP;
+    }
+
     const coords2 = new CoordSystem(new Range(-1, 1), new Range(-1, 1), perspectiveProjection);
     var drawToScreen2 = new DrawToScreen(myCanvas, coords2);
     drawToScreen2.addPoint(new Point(1, 1, 3), "green");
     drawToScreen2.addPoint(new Point(1, -1, 3), "green");
     drawToScreen2.addPoint(new Point(-1, -1, 3), "green");
     drawToScreen2.addPoint(new Point(-1, 1, 3), "green");
-    drawToScreen2.addPoint(new Point(1, 1, 4), "green");
-    drawToScreen2.addPoint(new Point(1, -1, 4), "green");
-    drawToScreen2.addPoint(new Point(-1, -1, 4), "green");
-    drawToScreen2.addPoint(new Point(-1, 1, 4), "green");
+    drawToScreen2.addPoint(new Point(1, 1, 5), "green");
+    drawToScreen2.addPoint(new Point(1, -1, 5), "green");
+    drawToScreen2.addPoint(new Point(-1, -1, 5), "green");
+    drawToScreen2.addPoint(new Point(-1, 1, 5), "green");
     drawToScreen2.addEdge(0, 1);
     drawToScreen2.addEdge(1, 2);
     drawToScreen2.addEdge(2, 3);
@@ -63,15 +103,40 @@ title: Entry 1
     drawToScreen2.addEdge(1, 5);
     drawToScreen2.addEdge(2, 6);
     drawToScreen2.addEdge(3, 7);
-    
+
     const FPS = 60;
+    var t = 0;
+    // var points = [
+    // Point(1, 1, 3),
+    // Point(1, -1, 3),
+    // Point(-1, -1, 3),
+    // Point(-1, 1, 3),
+    // Point(1, 1, 5),
+    // Point(1, -1, 5),
+    // Point(-1, -1, 5),
+    // Point(-1, 1, 5),
+    // ];
+
+    function newPosAtT() {
+        newPos = []
+        for (var i = 0; i < points.length; i++) {
+            const newP = new Point(points[i].x, points[i].y, points[i].z+0.1*t);
+            newPos.push(newP);
+        }
+        return newPos;
+    }
     function printLoop() {
         drawToScreen2.clearCanvas();
-        // drawToScreen2.printPoints();
+        drawToScreen2.printPoints();
         drawToScreen2.printEdges();
-        drawToScreen2.updatePositions(moveAway);
-        // drawToScreen2.updatePositions((point) => rotateY(point, 0.01));
+        // drawToScreen2.updatePositions(moveAway);
+        // drawToScreen2.updatePositions((point) => rotateY(point, 0.08));
         // drawToScreen2.updatePositions((point) => rotateZ(point, 0.005));
+        // drawToScreen2.updatePositions((point) => rotateZaroundP(point, 0.05, centroid(drawToScreen2.points)));
+        // drawToScreen2.updatePositions((point) => rotateYaroundP(point, 0.05, centroid(drawToScreen2.points)));
+        // drawToScreen2.updatePositions((point) => rotateXaroundP(point, 0.08, centroid(drawToScreen2.points)));
+        console.log(centroid(drawToScreen2.points));
+        // t += 0.01;
         setTimeout(printLoop, 1000/FPS);
     }
     setTimeout(printLoop, 1000/FPS);
