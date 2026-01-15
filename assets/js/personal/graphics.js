@@ -88,6 +88,15 @@ class DrawToScreen {
         }
     }
 
+    printPointsAfterTransform(func, size = 10) {
+        for (var i = 0; i < this.points.length; i++) {
+            this.ctx.fillStyle = this.colours[i];
+            const newPos = func(this.points[i]);
+            const {x: new_x, y: new_y} = this.coord.toCanvasCoords(this.canvas, newPos);
+            this.ctx.fillRect(new_x-size/2, new_y-size/2, size, size);
+        }
+    }
+
     printEdges(width = 1) {
         this.ctx.strokeStyle = "green"; // This must be updated    
         this.ctx.lineWidth = width;
