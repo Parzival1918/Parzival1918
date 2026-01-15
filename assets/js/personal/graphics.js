@@ -111,42 +111,4 @@ class DrawToScreen {
             this.ctx.stroke();
         }
     }
-
-    printPoints(size = 10) {
-        for (var i = 0; i < this.points.length; i++) {
-            this.ctx.fillStyle = this.colours[i];
-            const {x: new_x, y: new_y} = this.coord.toCanvasCoords(this.canvas, this.points[i]);
-            this.ctx.fillRect(new_x-size/2, new_y-size/2, size, size);
-        }
-    }
-
-    printPointsAfterTransform(func, size = 10) {
-        for (var i = 0; i < this.points.length; i++) {
-            this.ctx.fillStyle = this.colours[i];
-            const newPos = func(this.points[i]);
-            const {x: new_x, y: new_y} = this.coord.toCanvasCoords(this.canvas, newPos);
-            this.ctx.fillRect(new_x-size/2, new_y-size/2, size, size);
-        }
-    }
-
-    printEdges(width = 1) {
-        this.ctx.strokeStyle = "green"; // This must be updated    
-        this.ctx.lineWidth = width;
-        for (var i = 0; i < this.edges.length; i++) {
-            var p1 = this.points[this.edges[i][0]];
-            p1 = this.coord.toCanvasCoords(this.canvas, p1);
-            var p2 = this.points[this.edges[i][1]];
-            p2 = this.coord.toCanvasCoords(this.canvas, p2);
-            this.ctx.beginPath();
-            this.ctx.moveTo(p1.x, p1.y);
-            this.ctx.lineTo(p2.x, p2.y);
-            this.ctx.stroke();
-        }
-    }
-
-    updatePositions(updateFunc) {
-        for (var i = 0; i < this.points.length; i++) {
-            this.points[i] = updateFunc(this.points[i]);
-        }
-    }
 }
