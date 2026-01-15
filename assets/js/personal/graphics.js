@@ -62,6 +62,7 @@ class DrawToScreen {
         this.points = [];
         this.colours = [];
         this.edges = [];
+        this.funcs = [];
         this.background = background;
         this.ctx = canvas.getContext("2d");
     }
@@ -75,9 +76,40 @@ class DrawToScreen {
         this.edges.push([p1Idx, p2Idx]);
     }
 
+    addFunc(func) {
+        this.funcs.push(func);
+    }
+
     clearCanvas() {
         this.ctx.fillStyle = this.background;
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+    print(time = 0, size = 10, width = 1) {
+        var updatedPositionsT = []
+        for (var i = 0; i < this.points.length; i++) {
+            this.ctx.fillStyle = this.colours[i];
+            var updatedP = this.points[i];
+            for (var j = 0; j < this.funcs.length; j++) {
+                updatedP = this.funcs[j](updatedP, time);
+            }
+            const {x: new_x, y: new_y} = this.coord.toCanvasCoords(this.canvas, updatedP);
+            this.ctx.fillRect(new_x-size/2, new_y-size/2, size, size);
+            updatedPositionsT.push(updatedP);
+        }
+
+        this.ctx.strokeStyle = "green"; // This must be updated    
+        this.ctx.lineWidth = width;
+        for (var i = 0; i < this.edges.length; i++) {
+            var p1 = updatedPositionsT[this.edges[i][0]];
+            p1 = this.coord.toCanvasCoords(this.canvas, p1);
+            var p2 = updatedPositionsT[this.edges[i][1]];
+            p2 = this.coord.toCanvasCoords(this.canvas, p2);
+            this.ctx.beginPath();
+            this.ctx.moveTo(p1.x, p1.y);
+            this.ctx.lineTo(p2.x, p2.y);
+            this.ctx.stroke();
+        }
     }
 
     printPoints(size = 10) {

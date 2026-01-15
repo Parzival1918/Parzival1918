@@ -106,7 +106,7 @@ title: Entry 1
     drawToScreen2.addEdge(3, 7);
 
     const FPS = 60;
-    var t = 0;
+    var t = 3;
     // var points = [
     // Point(1, 1, 3),
     // Point(1, -1, 3),
@@ -117,24 +117,36 @@ title: Entry 1
     // Point(-1, -1, 5),
     // Point(-1, 1, 5),
     // ];
+    function newPosAtT(p, t) {
+        const newP = new Point(p.x, p.y, p.z+1*t);
+        // const cosA = Math.cos(10*t);
+        // const sinA = Math.sin(10*t);
+        // const offsetX = p.x;
+        // const offsetZ = p.z;
+        // const x = offsetX * cosA - offsetZ * sinA;
+        // const z = offsetX * sinA + offsetZ * cosA;
+        // var newP = new Point(x, p.y, z);
+        // newP.z += 4*t + 5;
+        return newP;
+    }
+    drawToScreen2.addFunc(newPosAtT);
 
     function printLoop() {
         drawToScreen2.clearCanvas();
-        var c = centroid(drawToScreen2.points);
-        c = new Point(0, 0);
-        function newPosAtT(p) {
-            // const newP = new Point(p.x, p.y, p.z+0.1*t);
-            const cosA = Math.cos(10*t);
-            const sinA = Math.sin(10*t);
-            const offsetX = p.x;
-            const offsetZ = p.z;
-            const x = offsetX * cosA - offsetZ * sinA;
-            const z = offsetX * sinA + offsetZ * cosA;
-            var newP = new Point(x, p.y, z);
-            newP.z += 4/t + 5;
-            return newP;
-        }
-        drawToScreen2.printPointsAfterTransform(newPosAtT);
+        drawToScreen2.print(time=t);
+        // function newPosAtT(p) {
+        //     // const newP = new Point(p.x, p.y, p.z+0.1*t);
+        //     const cosA = Math.cos(10*t);
+        //     const sinA = Math.sin(10*t);
+        //     const offsetX = p.x;
+        //     const offsetZ = p.z;
+        //     const x = offsetX * cosA - offsetZ * sinA;
+        //     const z = offsetX * sinA + offsetZ * cosA;
+        //     var newP = new Point(x, p.y, z);
+        //     newP.z += 4/t + 5;
+        //     return newP;
+        // }
+        // drawToScreen2.printPointsAfterTransform(newPosAtT);
         // drawToScreen2.printEdges();
         // drawToScreen2.updatePositions(moveAway);
         // drawToScreen2.updatePositions((point) => rotateY(point, 0.08));
