@@ -1,8 +1,7 @@
-# - title: Entry 1
-#   date: 2024-06-01
-#   file: test.html
-#   tags:
-#     - test
-#     - blog
-#   short_description: |
-#     This is a test blog entry to demonstrate the blog functionality.
+- title: Canvas graphics
+  date: X 2026
+  file: graphics_1.html
+  tags:
+    - JS
+  short_description: |
+    In this entry, I write a small JavaScript program that allows me to draw points to a canvas HTML element.
