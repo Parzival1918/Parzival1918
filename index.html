@@ -2,16 +2,39 @@
 title: Home
 ---
 
-<div class="container-fluid text-center py-5">
-    <h1>Pedro Juan Royo</h1>
-    <p class="text-secondary fs-5 mb-1 fw-light">MEng Materials Science & Engineering</p>
-    <p class="text-secondary fs-5 fw-light">PhD Student Computational Chemistry @ Day Group</p>
+<div class="container-fluid text-center pt-5">
+    <h1 class="interactive_text">Pedro Juan Royo</h1>
+    <p class="interactive_text text-secondary fs-5 mb-1 fw-light">MEng Materials Science & Engineering</p>
+    <p class="interactive_text text-secondary fs-5 fw-light">PhD Student Computational Chemistry @ Day Group</p>
+</div>
+
+<style>
+  a.style {
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  a.style:hover {
+    font-weight: bold;
+  }
+  a.style:hover::after {
+    content: "🔗";
+    position: absolute;
+  }
+</style>
+
+<div class="card-group pb-5">
+  <div class="card border-0 text-center"></div>
+  <div class="card border-0 text-center"><a class="style" href="{{ site.data.links.social.scholar }}" target="_blank" style="color: rgb(46, 46, 46);" onMouseOut="this.style.color='#2e2e2e'" onMouseOver="this.style.color='#4081ed'">Scholar</a></div>
+  <div class="card border-0 text-center"><a class="style" href="{{ site.data.links.social.orcid }}" target="_blank" style="color: rgb(46, 46, 46);" onMouseOut="this.style.color='#2e2e2e'" onMouseOver="this.style.color='#a6ce39'">Orcid</a></div>
+  <div class="card border-0 text-center"><a class="style" href="{{ site.data.links.social.github }}" target="_blank" style="color: rgb(46, 46, 46);" onMouseOut="this.style.color='#2e2e2e'" onMouseOver="this.style.color='#24292f'">GitHub</a></div>
+  <div class="card border-0 text-center"><a class="style" href="{{ site.data.links.social.linkedin }}" target="_blank" style="color: rgb(46, 46, 46);" onMouseOut="this.style.color='#2e2e2e'" onMouseOver="this.style.color='#0a66c2'">LinkedIn</a></div>
+  <div class="card border-0 text-center"></div>
 </div>
 
 <p class="mb-0">Welcome to my personal website! Here, you can find information about my research, publications, and academic journey. Feel free to explore the different sections to learn more about me.</p>
 
 <div class="d-grid gap-2 col-6 col-md-3 mx-auto pt-4">
-  <button class="btn btn-primary mb-2" type="button" onclick="location.href='{{ '/about' | absolute_url }}'">About me</button>
-  <button class="btn btn-primary" type="button" onclick="location.href='{{ '/publications' | absolute_url }}'">Publications <span class="badge text-bg-secondary">{{ site.data.publications | size }}</span></button>
-  <button class="btn btn-primary mt-2" type="button" onclick="location.href='{{ '/blog' | absolute_url }}'">Blog <span class="badge text-bg-secondary">{{ site.data.blog | size }}</span></button>
+  <button class="btn interactive_btn btn-primary mb-2" type="button" onclick="location.href='{{ '/about' | absolute_url }}'">About me</button>
+  <button class="btn interactive_btn btn-primary" type="button" onclick="location.href='{{ '/publications' | absolute_url }}'">Publications <span class="badge text-bg-secondary">{{ site.data.publications | size }}</span></button>
+  <button class="btn interactive_btn btn-primary mt-2" type="button" onclick="location.href='{{ '/blog' | absolute_url }}'">Blog <span class="badge text-bg-secondary">{{ site.data.blog | size }}</span></button>
 </div>
