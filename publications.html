@@ -7,8 +7,12 @@ title: Publications
   
   {% for pub in site.data.publications %}
   <div class="glass-card mb-4 p-4 animate-fade-in delay-2">
-    <div class="row align-items-start">
+    <div class="row align-items-center">
+      {% if pub.graphical_abstract %}
+      <div class="col-lg-8 col-12 order-lg-1 order-2 mt-lg-0 mt-4">
+      {% else %}
       <div class="col-12">
+      {% endif %}
         <h5 class="fw-bold text-gradient mb-3">{{ pub.title }}</h5>
         
         <!-- Authors -->
@@ -44,7 +48,7 @@ title: Publications
         </div>
 
         <!-- Abstract Trigger -->
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-start">
           <button class="btn-premium-secondary py-2 px-4 fs-6 rounded-3" 
                   type="button" 
                   data-bs-toggle="collapse" 
@@ -67,6 +71,34 @@ title: Publications
         </div>
 
       </div>
+
+      {% if pub.graphical_abstract %}
+      <div class="col-lg-4 col-12 order-lg-2 order-1 text-center">
+        <div class="graphical-abstract-wrapper position-relative overflow-hidden rounded-3 shadow-sm">
+          <img src="{{ pub.graphical_abstract | absolute_url }}" alt="Graphical Abstract for {{ pub.title }}" class="img-fluid w-100 h-auto d-block">
+          <!-- <div class="abstract-overlay">
+            <span class="badge bg-primary px-3 py-2 fs-6 shadow"><i class="fa-solid fa-magnifying-glass-plus me-2"></i>View Full</span>
+          </div> -->
+        </div>
+      </div>
+
+      <!-- Premium Modal for full graphical abstract viewing -->
+      <!-- <div class="modal fade" id="abstractModal-{{ forloop.index }}" tabindex="-1" aria-labelledby="abstractModalLabel-{{ forloop.index }}" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content glass-card p-2 border-0">
+            <div class="modal-header border-0 pb-0 justify-content-between">
+              <h6 class="modal-title fw-bold text-gradient" id="abstractModalLabel-{{ forloop.index }}"><i class="fa-solid fa-image me-2 text-primary"></i>Graphical Abstract</h6>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center p-3">
+              <img src="{{ pub.graphical_abstract | absolute_url }}" alt="Graphical Abstract for {{ pub.title }}" class="img-fluid rounded-3 max-vh-75 shadow">
+              <p class="text-secondary mt-3 small mb-0 fw-semibold">{{ pub.title }}</p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      {% endif %}
+
     </div>
   </div>
   {% endfor %}

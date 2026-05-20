@@ -449,6 +449,47 @@ body {
   margin-top: 1rem;
 }
 
+// --- Graphical Abstract Wrapper ---
+.graphical-abstract-wrapper {
+  background: var(--card-glass-bg);
+  border: 1px solid var(--card-glass-border) !important;
+  transition: var(--transition-smooth);
+  position: relative;
+  
+  img {
+    transition: var(--transition-smooth);
+  }
+  
+  .abstract-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: var(--transition-smooth);
+    z-index: 2;
+    border-radius: inherit;
+  }
+  
+  &:hover {
+    border-color: rgba(99, 102, 241, 0.4) !important;
+    box-shadow: var(--card-glass-shadow-hover) !important;
+    
+    img {
+      transform: scale(1.05);
+    }
+    
+    .abstract-overlay {
+      opacity: 1;
+    }
+  }
+}
+
 // --- Badges & Micro Items ---
 .badge-premium {
   background: var(--card-glass-bg);
