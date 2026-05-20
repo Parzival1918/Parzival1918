@@ -2,32 +2,92 @@
 title: Publications
 ---
 
-<h1>Publications</h1>
+<div class="animate-fade-in delay-1">
+  <h1 class="fw-bold text-gradient mb-4">Publications</h1>
+  
+  {% for pub in site.data.publications %}
+  <div class="glass-card mb-4 p-4 animate-fade-in delay-2">
+    <div class="row align-items-start">
+      <div class="col-12">
+        <h5 class="fw-bold text-gradient mb-3">{{ pub.title }}</h5>
+        
+        <!-- Authors -->
+        <p class="text-secondary mb-2 small">
+          <i class="fa-regular fa-user me-2 text-primary"></i>
+          {% for author in pub.authors %}
+            {% if author == "Pedro Juan Royo" %}
+              <strong class="text-primary">{{ author }}</strong>
+            {% else %}
+              {{ author }}
+            {% endif %}
+            {% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+          <span class="ms-2 text-muted">({{ pub.date }})</span>
+        </p>
 
-{% for pub in site.data.publications %}
-<div class="card hoverable">
-  <div class="card-body">
-    <h5 class="card-title">{{ pub.title }}</h5>
-    <p class="text-secondary mb-1">
-      {{ pub.authors | join: ", " }} ({{ pub.date }})
-    </p>
-    <p class="mb-1"><em>{{ pub.journal }}</em></p>
-    <p class="mb-2">DOI: <a href="{{ pub.url }}" target="_blank">{{ pub.doi }}</a></p>
-    {% if pub.preprint_url %}
-    <p class="mb-2">Preprint: <a href="{{ pub.preprint_url }}" target="_blank">{{ pub.preprint_doi }}</a></p>
-    {% endif %}
-    <div class="d-grid gap-2 d-md-flex justify-content-end">
-    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#abstract-{{ forloop.index }}" aria-expanded="false" aria-controls="abstract-{{ forloop.index }}">
-      Show Abstract
-    </button>
-    </div>
-    <div class="collapse mt-2" id="abstract-{{ forloop.index }}" style="transition: 0.7s;">
-      <p>
-        {{ pub.abstract }}
-      </p>
+        <!-- Journal -->
+        <p class="text-secondary mb-3 small">
+          <i class="fa-regular fa-newspaper me-2 text-primary"></i>
+          <em>{{ pub.journal }}</em>
+        </p>
+
+        <!-- Links (DOI & Preprint) -->
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <a class="badge badge-premium text-decoration-none py-2 px-3 d-inline-flex align-items-center gap-2" href="{{ pub.url }}" target="_blank">
+            <i class="fa-solid fa-link"></i> DOI: {{ pub.doi }} <i class="fa-solid fa-arrow-up-right-from-square ms-1 small text-muted"></i>
+          </a>
+          {% if pub.preprint_url %}
+          <a class="badge badge-premium text-decoration-none py-2 px-3 d-inline-flex align-items-center gap-2" href="{{ pub.preprint_url }}" target="_blank">
+            <i class="fa-solid fa-file-pdf"></i> Preprint: {{ pub.preprint_doi }} <i class="fa-solid fa-arrow-up-right-from-square ms-1 small text-muted"></i>
+          </a>
+          {% endif %}
+        </div>
+
+        <!-- Abstract Trigger -->
+        <div class="d-flex justify-content-end">
+          <button class="btn-premium-secondary py-2 px-4 fs-6 rounded-3" 
+                  type="button" 
+                  data-bs-toggle="collapse" 
+                  data-bs-target="#abstract-{{ forloop.index }}" 
+                  aria-expanded="false" 
+                  aria-controls="abstract-{{ forloop.index }}"
+                  id="btn-abstract-{{ forloop.index }}">
+            <i class="fa-regular fa-file-text me-2"></i> Show Abstract <i class="fa-solid fa-chevron-down ms-2 small" style="transition: transform 0.3s;"></i>
+          </button>
+        </div>
+
+        <!-- Collapsible Abstract -->
+        <div class="collapse" id="abstract-{{ forloop.index }}">
+          <div class="abstract-panel mt-3">
+            <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-circle-info me-2"></i>Abstract</h6>
+            <p class="text-secondary mb-0 small lh-lg">
+              {{ pub.abstract }}
+            </p>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
+  {% endfor %}
 </div>
 
-<br>
-{% endfor %}
+<script>
+  // Dynamic rotation for chevron icons when collapsing abstracts
+  document.addEventListener('DOMContentLoaded', () => {
+    {% for pub in site.data.publications %}
+    const collapseEl{{ forloop.index }} = document.getElementById('abstract-{{ forloop.index }}');
+    const buttonEl{{ forloop.index }} = document.getElementById('btn-abstract-{{ forloop.index }}');
+    
+    if (collapseEl{{ forloop.index }} && buttonEl{{ forloop.index }}) {
+      collapseEl{{ forloop.index }}.addEventListener('show.bs.collapse', () => {
+        buttonEl{{ forloop.index }}.innerHTML = '<i class="fa-regular fa-file-text me-2"></i> Hide Abstract <i class="fa-solid fa-chevron-down ms-2 small" style="transform: rotate(180deg); transition: transform 0.3s;"></i>';
+      });
+      
+      collapseEl{{ forloop.index }}.addEventListener('hide.bs.collapse', () => {
+        buttonEl{{ forloop.index }}.innerHTML = '<i class="fa-regular fa-file-text me-2"></i> Show Abstract <i class="fa-solid fa-chevron-down ms-2 small" style="transform: rotate(0deg); transition: transform 0.3s;"></i>';
+      });
+    }
+    {% endfor %}
+  });
+</script>

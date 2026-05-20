@@ -2,44 +2,88 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title }}</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <link href="{{ '/assets/css/main.css' | absolute_url }}" rel="stylesheet">
+  
+  <!-- Immediate theme check to avoid screen flash on load -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-bs-theme', savedTheme);
+      } else {
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = systemPrefersDark ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-bs-theme', theme);
+      }
+    })();
+  </script>
+
   <style>
+    /* Legacy Backward Compatibility Adapters mapped to Premium Styles */
     .hoverable {
-      transition: 0.3s;
+      transition: var(--transition-smooth) !important;
     }
 
     .hoverable:hover {
-      /* background-color: #f8f9fa; */
-      /* Set box shadow only at bottom */
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+      transform: translateY(-4px) !important;
+      box-shadow: var(--card-glass-shadow-hover) !important;
+      border-color: rgba(99, 102, 241, 0.25) !important;
     }
 
     .shaded {
-      box-shadow: 
-        0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--card-glass-shadow) !important;
     }
 
+    .interactive_text {
+      position: relative;
+      display: inline-block;
+      transition: var(--transition-smooth);
+    }
+    
     .interactive_text:before {
-      transition: all 0.6s;
-      content: "<";
+      transition: var(--transition-smooth);
+      content: "[";
       opacity: 0;
+      color: var(--bs-primary);
+      margin-right: 5px;
+      font-weight: 300;
     }
+    
     .interactive_text:after {
-      transition: all 0.6s;
-      content: ">";
+      transition: var(--transition-smooth);
+      content: "]";
       opacity: 0;
+      color: var(--bs-primary);
+      margin-left: 5px;
+      font-weight: 300;
     }
+    
+    .interactive_text:hover {
+      transform: scale(1.02);
+    }
+    
     .interactive_text:hover:before {
-      opacity: 0.5;
+      opacity: 1;
     }
+    
     .interactive_text:hover:after {
-      opacity: 0.5;
+      opacity: 1;
     }
 
     .interactive_btn:hover {
-      border-radius: 0.7cm;
-      transition: all 0.2s;
-      box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      transform: translateY(-3px);
+      transition: var(--transition-smooth);
+      box-shadow: 0 10px 20px -10px rgba(99, 102, 241, 0.4);
     }
   </style>
   <link rel="icon" type="image/png" href="{{ '/assets/images/favicon/favicon-96x96.png' | absolute_url }}" sizes="96x96" />

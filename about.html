@@ -2,116 +2,204 @@
 title: About
 ---
 
-<h1>About Me</h1>
+<div class="animate-fade-in delay-1">
+  <h1 class="fw-bold text-gradient mb-4">About Me</h1>
+  
+  <!-- Bio Glass Card -->
+  <div class="glass-card mb-5 p-4 p-md-5">
+    <p class="fs-5 text-secondary lh-lg mb-4">
+      Hello! I'm <strong>Pedro Juan Royo</strong>, a PhD student in Computational Chemistry at the Day Group in Southampton (UK). I hold a Master of Engineering in Materials Science & Engineering from the University of Sheffield. My research focuses on using the Monte Carlo threshold algorithm to explore the crystal packing energy landscapes of molecular crystals, and see how we can use this information in a crystal structure prediction workflow.
+    </p>
+    <p class="fs-5 text-secondary lh-lg mb-0">
+      In addition to my research, I have a strong interest in scientific programming and open-source software development. During my time in the <a class="text-decoration-none text-primary fw-semibold" href="{{ site.data.links.day-group }}" target="_blank">Day Group</a>, I have contributed to the <a class="text-decoration-none text-primary fw-semibold" href="{{ site.data.links.mol-cspy }}" target="_blank">mol-CSPy</a> codebase and lead group meetings to discuss code development. Some of my other projects can be found on my <a class="text-decoration-none text-primary fw-semibold" href="{{ site.data.links.social.github }}" target="_blank">GitHub</a>.
+    </p>
+  </div>
 
-<p class="mb-0 pb-4">Hello! I'm Pedro Juan Royo, a PhD student in Computational Chemistry at the Day Group in Southampton (UK). I hold a Master of Engineering in Materials Science & Engineering from the University of Sheffield. My research focuses on using the Monte Carlo threshold algorithm to explore the crystal packing energy landscapes of molecular crystals, and see how we can use this information in a crystal structure prediction workflow.</p>
-
-<p class="mb-0 pb-4">In addition to my research, I have a strong interest in scientific programming and open-source software development. During my time in the <a href="{{ site.data.links.day-group }}" target="_blank">Day Group</a> I have contributed to the <a href="{{ site.data.links.mol-cspy }}" target="_blank">mol-CSPy</a> code and lead the group meetings to talk about the code development. Some of my other projects are in my <a href="{{ site.data.links.social.github }}" target="_blank">GitHub</a>.</p>
-
-<div class="mb-3 d-flex justify-content-center">
-    <p class="me-3  my-auto"><span class="align-middle">Show content:</span></p>
-    <div class="btn-group" role="group">
-        <button type="button" class="btn btn-secondary active" id="relevant-btn">Main</button>
-        <button type="button" class="btn btn-secondary" id="all-btn">All</button>
+  <!-- Content Toggle Switch -->
+  <div class="mb-5 d-flex justify-content-center align-items-center gap-3 animate-fade-in delay-2">
+    <span class="text-secondary fw-semibold">Show content:</span>
+    <div class="premium-switch-container">
+      <button type="button" class="premium-switch-btn active" id="relevant-btn">Main Portfolio</button>
+      <button type="button" class="premium-switch-btn" id="all-btn">Full Curriculum</button>
     </div>
+  </div>
 </div>
 
 <style>
-    .content-non-relevant {
-        display: none;
-    }
+  /* Premium Transition styles for hidden content */
+  .content-non-relevant {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: scale(0.95) translateY(-10px);
+    transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.4s ease, 
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                margin 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                padding 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    border-width: 0 !important;
+    pointer-events: none;
+  }
+  
+  .content-non-relevant.show-item {
+    max-height: 1000px;
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    margin-bottom: 2.5rem !important;
+    pointer-events: auto;
+  }
+  
+  /* Timeline-specific override for non-relevant list elements */
+  li.content-non-relevant.show-item {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Grid item specific override */
+  div.content-non-relevant.show-item {
+    margin-bottom: 1.5rem !important;
+  }
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const relevantBtn = document.getElementById('relevant-btn');
-        const allBtn = document.getElementById('all-btn');
-        const nonRelevantItems = document.querySelectorAll('.content-non-relevant');
+  document.addEventListener('DOMContentLoaded', function() {
+    const relevantBtn = document.getElementById('relevant-btn');
+    const allBtn = document.getElementById('all-btn');
+    const nonRelevantItems = document.querySelectorAll('.content-non-relevant');
 
-        relevantBtn.addEventListener('click', function() {
-            relevantBtn.classList.add('active');
-            allBtn.classList.remove('active');
-            nonRelevantItems.forEach(item => item.style.display = 'none');
-        });
-
-        allBtn.addEventListener('click', function() {
-            allBtn.classList.add('active');
-            relevantBtn.classList.remove('active');
-            nonRelevantItems.forEach(item => item.style.display = 'block');
-        });
+    relevantBtn.addEventListener('click', function() {
+      relevantBtn.classList.add('active');
+      allBtn.classList.remove('active');
+      nonRelevantItems.forEach(item => {
+        item.classList.remove('show-item');
+      });
     });
+
+    allBtn.addEventListener('click', function() {
+      allBtn.classList.add('active');
+      relevantBtn.classList.remove('active');
+      nonRelevantItems.forEach(item => {
+        item.classList.add('show-item');
+      });
+      
+      // Trigger scroll animations for newly shown items
+      setTimeout(() => {
+        window.dispatchEvent(new Event('scroll'));
+      }, 50);
+    });
+  });
 </script>
 
-<h3>Work Experience</h3>
-
-{% for work in site.data.cv.experience %}
-
-<div class="{% if work.relevant == false %} content-non-relevant{% endif %}">
-    <div class="p-3 hoverable border rounded-3">
-        <h5 class="mb-1">{{ work.position }} - {{ work.location }}</h5>
-        <p class="text-secondary mb-1">{{ work.start_date }} - {{ work.end_date }}</p>
-        <ul class="mb-0">
-            {% for detail in work.details %}
-            <li>{{ detail }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <br>
-</div>
-
-{% endfor %}
-
 <div class="row">
-    <h3>Skills</h3>
-    {% for skill in site.data.cv.skills %}
-    <div class="col-12 col-sm-6 mb-3 {% if skill.relevant == false %} content-non-relevant{% endif %}">
-        <div class="p-3 hoverable border rounded-3">
-            <h5 class="mb-1">{{ skill.name }}</h5>
-            <p class="mb-0">{{ skill.details }}</p>
+  
+  <!-- Left Column: Timelines (Experience & Education) -->
+  <div class="col-12 col-lg-7 animate-fade-in delay-3">
+    
+    <!-- Work Experience Section -->
+    <div class="mb-5">
+      <h3 class="fw-bold mb-4 text-gradient"><i class="fa-solid fa-briefcase me-2"></i>Work Experience</h3>
+      
+      <div class="timeline">
+        {% for work in site.data.cv.experience %}
+        <div class="timeline-item {% if work.relevant == false %}content-non-relevant{% endif %}">
+          <div class="glass-card p-3 p-md-4">
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-2 gap-2">
+              <h5 class="fw-bold mb-0">{{ work.position }}</h5>
+              <span class="badge badge-premium text-nowrap">{{ work.start_date }} - {{ work.end_date }}</span>
+            </div>
+            <p class="text-primary fw-semibold mb-3 small"><i class="fa-solid fa-map-location-dot me-1"></i>{{ work.location }}</p>
+            <ul class="mb-0 text-secondary ps-3 small lh-lg">
+              {% for detail in work.details %}
+              <li class="mb-1">{{ detail }}</li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
+        {% endfor %}
+      </div>
     </div>
-    {% endfor %}
-    <h3>Languages</h3>
-    {% for lang in site.data.cv.Languages %}
-    <div class="col-12 col-sm-6 mb-3 {% if lang.relevant == false %} content-non-relevant{% endif %}">
-        <div class="p-3 hoverable border rounded-3">
-            <h5 class="mb-1">{{ lang.name }}</h5>
-            <p class="mb-0">{{ lang.level }}</p>
+
+    <!-- Education Section -->
+    <div class="mb-5">
+      <h3 class="fw-bold mb-4 text-gradient"><i class="fa-solid fa-graduation-cap me-2"></i>Education</h3>
+      
+      <div class="timeline">
+        {% for edu in site.data.cv.education %}
+        <div class="timeline-item {% if edu.relevant == false %}content-non-relevant{% endif %}">
+          <div class="glass-card p-3 p-md-4">
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-2 gap-2">
+              <h5 class="fw-bold mb-0">{{ edu.degree }}</h5>
+              <span class="badge badge-premium text-nowrap">{{ edu.start_date }} - {{ edu.end_date }}</span>
+            </div>
+            <p class="text-primary fw-semibold mb-3 small"><i class="fa-solid fa-building-columns me-1"></i>{{ edu.institution }}</p>
+            <ul class="mb-0 text-secondary ps-3 small lh-lg">
+              {% for detail in edu.details %}
+              <li class="mb-1">{{ detail }}</li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
+        {% endfor %}
+      </div>
     </div>
-    {% endfor %}
-</div>
 
-<h3>Education</h3>
+  </div>
 
-{% for edu in site.data.cv.education %}
-
-<div class="{% if edu.relevant == false %} content-non-relevant{% endif %}">
-    <div class="p-3 hoverable border rounded-3">
-        <h5 class="mb-1">{{ edu.degree }} - {{ edu.institution }}</h5>
-        <p class="text-secondary mb-1">{{ edu.start_date }} - {{ edu.end_date }}</p>
-        <ul class="mb-0">
-            {% for detail in edu.details %}
-            <li>{{ detail }}</li>
-            {% endfor %}
-        </ul>
+  <!-- Right Column: Skills, Languages, & Awards -->
+  <div class="col-12 col-lg-5 animate-fade-in delay-4">
+    
+    <!-- Skills Section -->
+    <div class="mb-5">
+      <h3 class="fw-bold mb-4 text-gradient"><i class="fa-solid fa-screwdriver-wrench me-2"></i>Skills</h3>
+      <div class="row">
+        {% for skill in site.data.cv.skills %}
+        <div class="col-12 mb-3 {% if skill.relevant == false %}content-non-relevant{% endif %}">
+          <div class="glass-card p-3">
+            <h6 class="fw-bold mb-2"><i class="fa-solid fa-circle-check text-primary me-2"></i>{{ skill.name }}</h6>
+            <p class="text-secondary mb-0 small lh-base">{{ skill.details }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
     </div>
-    <br>
-</div>
 
-{% endfor %}
-
-<h3>Honours & Awards</h3>
-
-{% for award in site.data.cv.honours_awards %}
-
-<div class="{% if award.relevant == false %} content-non-relevant{% endif %}">
-    <div class="p-3 hoverable border rounded-3">
-        <h5 class="mb-1">{{ award.title }} - {{ award.institution }}</h5>
-        <p class="text-secondary mb-1">{{ award.date }}</p>
-        <p class="mb-0">{{ award.details }}</p>
+    <!-- Languages Section -->
+    <div class="mb-5">
+      <h3 class="fw-bold mb-4 text-gradient"><i class="fa-solid fa-language me-2"></i>Languages</h3>
+      <div class="row">
+        {% for lang in site.data.cv.Languages %}
+        <div class="col-12 mb-3 {% if lang.relevant == false %}content-non-relevant{% endif %}">
+          <div class="glass-card p-3 d-flex justify-content-between align-items-center">
+            <h6 class="fw-bold mb-0">{{ lang.name }}</h6>
+            <span class="badge badge-premium">{{ lang.level }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
     </div>
-    <br>
-</div>
 
-{% endfor %}
+    <!-- Honours & Awards Section -->
+    <div class="mb-5">
+      <h3 class="fw-bold mb-4 text-gradient"><i class="fa-solid fa-trophy me-2"></i>Honours & Awards</h3>
+      <div class="row">
+        {% for award in site.data.cv.honours_awards %}
+        <div class="col-12 mb-3 {% if award.relevant == false %}content-non-relevant{% endif %}">
+          <div class="glass-card p-3">
+            <div class="d-flex justify-content-between align-items-start mb-2 gap-2">
+              <h6 class="fw-bold mb-0 text-gradient pe-1">{{ award.title }}</h6>
+              <span class="badge badge-premium text-nowrap">{{ award.date }}</span>
+            </div>
+            <p class="text-primary fw-semibold mb-2 small"><i class="fa-solid fa-building me-1"></i>{{ award.institution }}</p>
+            <p class="text-secondary mb-0 small lh-base">{{ award.details }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+
+</div>
