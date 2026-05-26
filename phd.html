@@ -1,0 +1,798 @@
+---
+title: My PhD Research
+---
+
+<!-- Include jQuery and 3Dmol.js for Interactive molecular visualization -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://3dmol.org/build/3Dmol-min.js"></script>
+
+<div class="animate-fade-in delay-1">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
+    <div>
+      <h1 class="fw-bold text-gradient mb-1">My PhD Research</h1>
+      <p class="fs-5 text-secondary fw-light mb-0">Exploring Potential Energy Surfaces with Monte Carlo Threshold Mapping</p>
+    </div>
+    <span class="badge badge-premium py-2 px-3"><i class="fa-solid fa-graduation-cap me-2 text-primary"></i>PhD Candidate</span>
+  </div>
+
+  <!-- Abstract & Overview Glass Card -->
+  <div class="glass-card mb-5 p-4 p-md-5">
+    <div class="row align-items-center">
+      <div class="col-12 col-lg-8">
+        <h3 class="fw-bold text-gradient mb-3">Project Overview</h3>
+        <p class="fs-6 text-secondary lh-lg mb-3">
+          My doctoral research in the <strong>Day Group</strong> at the University of Southampton focuses on investigating the <strong>crystal potential energy surface (PES)</strong> of organic molecules. By employing advanced <strong>Monte Carlo threshold (MCT)</strong> mapping, my project aims to bridge the gap in <strong>crystal structure prediction (CSP)</strong>.
+        </p>
+        <p class="fs-6 text-secondary lh-lg mb-0">
+          While traditional CSP is highly effective at identifying the local minima of a crystal landscape, it does not naturally reveal the <strong>energy barriers</strong> between these forms. By obtaining these barrier heights, we can rationalise the appearance of experimental polymorphs and (hopefully) predict the appearance of new polymorphs that would otherwise be difficult to compute with traditional CSP workflows.
+        </p>
+      </div>
+      <div class="col-12 col-lg-4 text-center mt-4 mt-lg-0">
+        <div class="p-4 rounded-3 border border-secondary border-opacity-10 bg-dark bg-opacity-30 d-inline-block w-100">
+          <h5 class="fw-bold text-primary mb-3"><i class="fa-solid fa-microscope me-2"></i>Core Techniques</h5>
+          <div class="d-flex flex-wrap gap-2 justify-content-center">
+            <span class="badge-premium py-2 px-3">Monte Carlo</span>
+            <span class="badge-premium py-2 px-3">Threshold Mapping</span>
+            <span class="badge-premium py-2 px-3">CSP Landscapes</span>
+            <span class="badge-premium py-2 px-3">Disconnectivity Trees</span>
+            <span class="badge-premium py-2 px-3">Polymorphism</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1: Interactive Energy Landscape & Monte Carlo Simulator -->
+<div class="animate-fade-in delay-2 mb-5">
+  <div class="d-flex align-items-center mb-4">
+    <h3 class="fw-bold text-gradient mb-0"><i class="fa-solid fa-gamepad me-3 text-primary"></i>Interactive Threshold Simulator</h3>
+  </div>
+
+  <div class="glass-card p-4 p-md-5">
+    <p class="fs-6 text-secondary lh-lg mb-4">
+      Explore the mechanics of the <strong>Monte Carlo Threshold (MCT)</strong> algorithm in real-time. In an MCT simulation, a random walker explores a potential energy landscape by taking random steps. However, any step that exceeds a predefined <strong>Energy Lid</strong> (the threshold) is strictly rejected. As you raise the Energy Lid, the walker gains access to higher barriers, allowing it to cross transition states and connect previously isolated crystal structures (polymorphs). This simulation starts the MCT trajectory from the Form I local minimum of a hypothetical crystal landscape. Your task is to adjust the Energy Lid and observe how the walker navigates the landscape, discovering new polymorphs and connecting them through energy barriers.
+    </p>
+
+    <!-- Simulation Workspace -->
+    <div class="row g-4 align-items-stretch mb-4">
+      <!-- PES Canvas -->
+      <div class="col-12 col-lg-7">
+        <div class="p-3 rounded-3 border border-secondary border-opacity-10 bg-dark bg-opacity-40 d-flex flex-column h-100">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="fw-semibold text-secondary small"><i class="fa-solid fa-chart-line me-2 text-primary"></i>Potential Energy Surface (PES)</span>
+            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-20 py-1 px-2" id="sim-status">Idle</span>
+          </div>
+          <div class="position-relative flex-grow-1 overflow-hidden" style="min-height: 320px;">
+            <canvas id="pesCanvas" class="w-100 h-100 rounded bg-black bg-opacity-25" style="border: 1px solid rgba(255,255,255,0.05);"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Disconnectivity Graph Canvas -->
+      <div class="col-12 col-lg-5">
+        <div class="p-3 rounded-3 border border-secondary border-opacity-10 bg-dark bg-opacity-40 d-flex flex-column h-100">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="fw-semibold text-secondary small"><i class="fa-solid fa-sitemap me-2 text-primary"></i>Disconnectivity Graph</span>
+            <span class="text-muted small" id="connections-found">Connections: 0/3</span>
+          </div>
+          <div class="position-relative flex-grow-1 overflow-hidden" style="min-height: 320px;">
+            <canvas id="treeCanvas" class="w-100 h-100 rounded bg-black bg-opacity-25" style="border: 1px solid rgba(255,255,255,0.05);"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Simulation Dashboard Controls -->
+    <div class="p-4 rounded-3 border border-secondary border-opacity-10 bg-dark bg-opacity-30">
+      <div class="row align-items-center g-4">
+        <!-- Sliders -->
+        <div class="col-12 col-md-6">
+          <div class="mb-3">
+            <label for="lidSlider" class="form-label d-flex justify-content-between text-secondary fw-semibold small">
+              <span>Energy Lid Threshold:</span>
+              <span class="text-primary font-monospace" id="lidVal">160 kJ/mol</span>
+            </label>
+            <input type="range" class="form-range" id="lidSlider" min="100" max="300" step="1" value="160">
+          </div>
+          <div>
+            <label for="speedSlider" class="form-label d-flex justify-content-between text-secondary fw-semibold small">
+              <span>Simulation Speed:</span>
+              <span class="text-primary font-monospace" id="speedVal">Medium</span>
+            </label>
+            <input type="range" class="form-range" id="speedSlider" min="1" max="3" step="1" value="2">
+          </div>
+        </div>
+
+        <!-- Buttons and Metrics -->
+        <div class="col-12 col-md-6">
+          <div class="d-flex flex-wrap gap-2 justify-content-md-end mb-3">
+            <button class="btn-premium d-inline-flex align-items-center gap-2" id="btn-start-sim">
+              <i class="fa-solid fa-play"></i> Run MCT Trajectory
+            </button>
+            <button class="btn-premium-secondary d-inline-flex align-items-center gap-2" id="btn-reset-sim">
+              <i class="fa-solid fa-rotate-left"></i> Reset
+            </button>
+          </div>
+          <div class="row g-2 text-center">
+            <div class="col-6 col-sm-3">
+              <div class="p-2 rounded border border-secondary border-opacity-10 bg-black bg-opacity-20">
+                <div class="text-muted small mb-1">Total Steps</div>
+                <div class="fw-bold text-primary font-monospace" id="stat-steps">0</div>
+              </div>
+            </div>
+            <div class="col-6 col-sm-3">
+              <div class="p-2 rounded border border-secondary border-opacity-10 bg-black bg-opacity-20">
+                <div class="text-muted small mb-1">Accepted</div>
+                <div class="fw-bold text-primary font-monospace" id="stat-accepted">0</div>
+              </div>
+            </div>
+            <div class="col-6 col-sm-3">
+              <div class="p-2 rounded border border-secondary border-opacity-10 bg-black bg-opacity-20">
+                <div class="text-muted small mb-1">Rejection %</div>
+                <div class="fw-bold text-primary font-monospace" id="stat-reject">0%</div>
+              </div>
+            </div>
+            <div class="col-6 col-sm-3">
+              <div class="p-2 rounded border border-secondary border-opacity-10 bg-black bg-opacity-20">
+                <div class="text-muted small mb-1">Current Polymorph</div>
+                <div class="fw-bold text-gradient font-monospace" id="stat-basin">Form I</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: 3D Molecule and Crystal Viewer -->
+<div class="animate-fade-in delay-3 mb-5">
+  <h3 class="fw-bold text-gradient mb-4"><i class="fa-solid fa-cube me-3 text-primary"></i>Interactive 3D Molecular Showcase</h3>
+
+  <div class="row g-4">
+    <!-- Selection & Molecule Details -->
+    <div class="col-12 col-lg-4">
+      <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="fw-bold text-primary mb-3"><i class="fa-solid fa-list me-2"></i>Select Molecule</h5>
+          
+          <div class="d-flex flex-column gap-2 mb-4">
+            <button class="btn btn-premium-secondary text-start active" id="btn-mol-pyrene" data-cid="31423" data-desc="Pyrene is a classic polycyclic aromatic hydrocarbon (PAH) with four fused benzene rings. In my PhD, we mapped its crystal landscape across different energy potentials, discovering highly consistent barrier heights between its polymorphic structures.">
+              <i class="fa-solid fa-atom me-2"></i>Pyrene
+            </button>
+            <button class="btn btn-premium-secondary text-start" id="btn-mol-phenanthrene" data-cid="995" data-desc="Phenanthrene is an isomer of anthracene containing three fused rings. Its packing landscape exhibits distinct energy barriers that determine which polymorphic crystalline form nucleates under specific experimental conditions.">
+              <i class="fa-solid fa-atom me-2"></i>Phenanthrene
+            </button>
+            <button class="btn btn-premium-secondary text-start" id="btn-mol-perylene" data-cid="9142" data-desc="Perylene consists of two naphthalene molecules connected by a carbon-carbon bond. It exhibits a highly polymorphic landscape. Our study mapped its barrier transition networks, matching experimental recrystallisation behaviors perfectly.">
+              <i class="fa-solid fa-atom me-2"></i>Perylene
+            </button>
+            <button class="btn btn-premium-secondary text-start" id="btn-mol-roy" data-cid="395460" data-desc="ROY (5-methyl-2-[(2-nitrophenyl)amino]thiophene-3-carbonitrile) is a legendary molecule in crystal engineering, named for its red, orange, and yellow polymorphic crystals. We used ROY to test our flexible molecular moves within the Monte Carlo threshold algorithm, exploring both internal conformational degrees of freedom and crystal packing energy barriers.">
+              <i class="fa-solid fa-atom me-2"></i>ROY (Flexible Model)
+            </button>
+          </div>
+        </div>
+
+        <div class="p-3 rounded border border-secondary border-opacity-10 bg-dark bg-opacity-30">
+          <h6 class="fw-bold text-primary mb-2" id="mol-detail-title">Pyrene Details</h6>
+          <p class="text-secondary small mb-0 lh-lg" id="mol-detail-desc">
+            Pyrene is a classic polycyclic aromatic hydrocarbon (PAH) with four fused benzene rings. In my PhD, we mapped its crystal landscape across different energy potentials, discovering highly consistent barrier heights between its polymorphic structures.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3Dmol Viewport -->
+    <div class="col-12 col-lg-8">
+      <div class="glass-card p-3 h-100 d-flex flex-column justify-content-between">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="fw-semibold text-secondary small"><i class="fa-solid fa-rotate me-2 text-primary"></i>Drag to rotate | Scroll to zoom</span>
+          <div class="d-flex gap-2">
+            <button class="badge badge-premium py-1 px-2 active border-0" id="btn-view-stick">Stick Model</button>
+            <button class="badge badge-premium py-1 px-2 border-0" id="btn-view-sphere">Spacefill</button>
+          </div>
+        </div>
+
+        <!-- 3Dmol.js viewport container -->
+        <div id="mol-viewport" class="rounded border border-secondary border-opacity-10 bg-black bg-opacity-30 flex-grow-1 position-relative" style="min-height: 400px;">
+          <!-- Spinning Loader Overlay -->
+          <div class="position-absolute top-50 start-50 translate-middle text-center" id="mol-loader">
+            <div class="spinner-border text-primary mb-2" role="status"></div>
+            <div class="text-muted small">Loading coordinates...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: Key Progression Findings -->
+<div class="animate-fade-in delay-4 mb-5">
+  <h3 class="fw-bold text-gradient mb-4"><i class="fa-solid fa-flask-vial me-3 text-primary"></i>Key PhD Milestones & Projects</h3>
+
+  <div class="row g-4">
+    <!-- Project 1 -->
+    <div class="col-12 col-md-4">
+      <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+        <div>
+          <span class="badge badge-premium mb-3"><i class="fa-solid fa-cube me-1"></i>Phase 1</span>
+          <h5 class="fw-bold mb-3">PAH Crystal Landscapes</h5>
+          <p class="text-secondary small lh-lg mb-0">
+            Mapped the potential energy surfaces of three polycyclic aromatic hydrocarbons: <strong>phenanthrene, pyrene, and perylene</strong>. We tested three distinct potential models, proving that energy barriers between experimental polymorphs remain highly consistent regardless of the force field model used.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="col-12 col-md-4">
+      <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+        <div>
+          <span class="badge badge-premium mb-3"><i class="fa-solid fa-chart-pie me-1"></i>Phase 2</span>
+          <h5 class="fw-bold mb-3">Large-Scale Rigid Mapping</h5>
+          <p class="text-secondary small lh-lg mb-0">
+            Conducted a massive Monte Carlo threshold study spanning <strong>55 small rigid molecules</strong>. Applying unsupervised K-means clustering to the disconnectivity graph descriptors, we successfully categorized the crystal landscapes into the distinct structural classes originally theorized by David Wales.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="col-12 col-md-4">
+      <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+        <div>
+          <span class="badge badge-premium mb-3"><i class="fa-solid fa-dna me-1"></i>Phase 3</span>
+          <h5 class="fw-bold mb-3">Intramolecular Flexibility & ROY</h5>
+          <p class="text-secondary small lh-lg mb-0">
+            Expanded the Monte Carlo threshold algorithm to include intramolecular conformational moves, allowing us to explore flexible crystal landscapes. Applied this to the iconic ROY molecule.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- JAVASCRIPT FOR LANDSCAPE SIMULATOR & 3DMOL  -->
+<!-- ========================================== -->
+<script>
+$(document).ready(function() {
+  
+  // ==========================================
+  // 3D MOLECULE VIEWER CODE
+  // ==========================================
+  let glViewer = null;
+  let activeStyle = "stick";
+  let activeCID = "31423";
+  
+  function initMoleculeViewer(cid) {
+    activeCID = cid;
+    $("#mol-loader").show();
+    
+    // Clear viewport if already existing
+    const container = $("#mol-viewport");
+    container.find("iframe").remove();
+    container.find("div.viewer_3dmoljs").remove();
+    
+    // Create new element
+    const viewerDiv = $("<div style='width: 100%; height: 100%;'></div>").appendTo(container);
+    
+    glViewer = $3Dmol.createViewer(viewerDiv, {
+      defaultcolors: $3Dmol.rasmolElementColors,
+      backgroundColor: "transparent"
+    });
+    
+    $3Dmol.download("cid:" + cid, glViewer, {}, function() {
+      $("#mol-loader").hide();
+      
+      // Apply style
+      applyMoleculeStyle();
+      
+      glViewer.zoomTo();
+      glViewer.spin(true, 0.05); // Elegant slow rotation
+      glViewer.render();
+    });
+  }
+  
+  function applyMoleculeStyle() {
+    if (!glViewer) return;
+    if (activeStyle === "stick") {
+      glViewer.setStyle({}, { stick: { radius: 0.15, colorscheme: "Jmol" } });
+    } else {
+      glViewer.setStyle({}, { sphere: { scale: 0.3, colorscheme: "Jmol" } });
+    }
+    glViewer.render();
+  }
+  
+  // Set up 3D viewer listeners
+  $("#btn-view-stick").click(function() {
+    activeStyle = "stick";
+    $(this).addClass("active").siblings().removeClass("active");
+    applyMoleculeStyle();
+  });
+  
+  $("#btn-view-sphere").click(function() {
+    activeStyle = "sphere";
+    $(this).addClass("active").siblings().removeClass("active");
+    applyMoleculeStyle();
+  });
+  
+  $("[id^=btn-mol-]").click(function() {
+    $(this).addClass("active").siblings().removeClass("active");
+    const cid = $(this).data("cid");
+    const name = $(this).text().trim();
+    const desc = $(this).data("desc");
+    
+    $("#mol-detail-title").text(name + " Details");
+    $("#mol-detail-desc").text(desc);
+    
+    initMoleculeViewer(cid);
+  });
+  
+  // Initialize default viewer (Pyrene)
+  initMoleculeViewer("31423");
+  
+  // ==========================================
+  // POTENTIAL ENERGY SURFACE SIMULATOR CODE
+  // ==========================================
+  const pesCanvas = document.getElementById("pesCanvas");
+  const treeCanvas = document.getElementById("treeCanvas");
+  
+  if (pesCanvas && treeCanvas) {
+    const pesCtx = pesCanvas.getContext("2d");
+    const treeCtx = treeCanvas.getContext("2d");
+    
+    let simInterval = null;
+    let isRunning = false;
+    let currentLid = 160; // Default lid in coordinates (canvas scale)
+    let speed = 2; // Medium speed
+    
+    // Statistics
+    let statSteps = 0;
+    let statAccepted = 0;
+    
+    // Landscape Geometry Configuration
+    // Y coordinates closer to 0 represent higher energy.
+    // Y coordinates closer to 350 represent lower energy (wells).
+    const points = [
+      { x: 30, y: 100 },
+      { x: 120, y: 290, name: "Form I" },  // Basin 1 (Global Min)
+      { x: 190, y: 160 },                 // Barrier 1
+      { x: 260, y: 240, name: "Form II" }, // Basin 2 (Metastable)
+      { x: 330, y: 130 },                 // Barrier 2 (Peak 2)
+      { x: 400, y: 210, name: "Form III" },// Basin 3
+      { x: 460, y: 170 },                 // Barrier 3
+      { x: 520, y: 190, name: "Form IV" }, // Basin 4
+      { x: 570, y: 110 }
+    ];
+    
+    // Walker properties
+    let walker = {
+      x: 120, // Start at Form I
+      y: 290
+    };
+    
+    // Disconnectivity tree structure data
+    // Terminals at their energy levels
+    const treeTerminals = [
+      { name: "Form I", x: 60, y: 290, startX: 120 },
+      { name: "Form II", x: 140, y: 240, startX: 260 },
+      { name: "Form III", x: 220, y: 210, startX: 400 },
+      { name: "Form IV", x: 300, y: 190, startX: 520 }
+    ];
+    
+    // Node connectivites and transition energies (Canvas coordinates)
+    const connections = [
+      { type: "node", x: 260, y: 170, label: "Form III/IV Connect", left: "Form III", right: "Form IV", barrier: 170, active: false },
+      { type: "node", x: 100, y: 160, label: "Form I/II Connect", left: "Form I", right: "Form II", barrier: 160, active: false },
+      { type: "node", x: 180, y: 130, label: "All Connect", left: "Form I/II", right: "Form III/IV", barrier: 130, active: false }
+    ];
+    
+    // Helper to interpolate potential energy surface
+    function getPES_Energy(x) {
+      if (x <= points[0].x) return points[0].y;
+      if (x >= points[points.length-1].x) return points[points.length-1].y;
+      for (let i = 0; i < points.length - 1; i++) {
+        if (x >= points[i].x && x <= points[i+1].x) {
+          let t = (x - points[i].x) / (points[i+1].x - points[i].x);
+          let mu = (1 - Math.cos(t * Math.PI)) / 2;
+          return points[i].y * (1 - mu) + points[i+1].y * mu;
+        }
+      }
+      return 200;
+    }
+    
+    // Identify which basin the walker is currently closest to
+    function getCurrentBasinName(x) {
+      if (x < 190) return "Form I";
+      if (x >= 190 && x < 330) return "Form II";
+      if (x >= 330 && x < 460) return "Form III";
+      return "Form IV";
+    }
+    
+    // Canvas sizing setup
+    function resizeCanvases() {
+      const pesContainer = pesCanvas.parentElement;
+      pesCanvas.width = pesContainer.clientWidth;
+      pesCanvas.height = pesContainer.clientHeight;
+      
+      const treeContainer = treeCanvas.parentElement;
+      treeCanvas.width = treeContainer.clientWidth;
+      treeCanvas.height = treeContainer.clientHeight;
+      
+      drawSimulation();
+    }
+    
+    window.addEventListener("resize", resizeCanvases);
+    setTimeout(resizeCanvases, 100);
+    
+    // Draw elements
+    function drawSimulation() {
+      drawPES();
+      drawTree();
+    }
+    
+    // Draw Left Canvas (PES)
+    function drawPES() {
+      pesCtx.clearRect(0, 0, pesCanvas.width, pesCanvas.height);
+      const w = pesCanvas.width;
+      const h = pesCanvas.height;
+      
+      // Draw grid
+      pesCtx.strokeStyle = "rgba(255, 255, 255, 0.03)";
+      pesCtx.lineWidth = 1;
+      for (let x = 0; x < w; x += 30) {
+        pesCtx.beginPath();
+        pesCtx.moveTo(x, 0);
+        pesCtx.lineTo(x, h);
+        pesCtx.stroke();
+      }
+      for (let y = 0; y < h; y += 30) {
+        pesCtx.beginPath();
+        pesCtx.moveTo(0, y);
+        pesCtx.lineTo(w, y);
+        pesCtx.stroke();
+      }
+      
+      // Render Potential Energy Curve
+      pesCtx.beginPath();
+      pesCtx.lineWidth = 4;
+      
+      // Create indigo-to-teal gradient for energy curve
+      const grad = pesCtx.createLinearGradient(0, 0, w, 0);
+      grad.addColorStop(0, "#6366f1");
+      grad.addColorStop(0.5, "#8b5cf6");
+      grad.addColorStop(1, "#06b6d4");
+      
+      pesCtx.strokeStyle = grad;
+      
+      for (let x = 0; x < w; x++) {
+        let mappedX = (x / w) * 600; // Map local canvas x coordinates to absolute geometry points
+        let mappedY = getPES_Energy(mappedX);
+        let screenY = (mappedY / 350) * h;
+        if (x === 0) {
+          pesCtx.moveTo(x, screenY);
+        } else {
+          pesCtx.lineTo(x, screenY);
+        }
+      }
+      pesCtx.stroke();
+      
+      // Draw Basin Label names at bottom
+      const isDark = document.documentElement.getAttribute('data-bs-theme') === 'dark';
+      pesCtx.fillStyle = isDark ? "rgba(255,255,255,0.45)" : "rgba(33, 37, 41, 0.65)";
+      pesCtx.font = "bold 10px sans-serif";
+      pesCtx.textAlign = "center";
+      points.forEach(p => {
+        if (p.name) {
+          let screenX = (p.x / 600) * w;
+          let screenY = (p.y / 350) * h;
+          pesCtx.fillText(p.name, screenX, screenY + 22);
+          
+          pesCtx.beginPath();
+          pesCtx.arc(screenX, screenY, 4, 0, Math.PI * 2);
+          pesCtx.fillStyle = isDark ? "rgba(255, 255, 255, 0.25)" : "rgba(33, 37, 41, 0.25)";
+          pesCtx.fill();
+          pesCtx.fillStyle = isDark ? "rgba(255,255,255,0.45)" : "rgba(33, 37, 41, 0.65)";
+        }
+      });
+      
+      // Draw energy lid threshold line
+      let screenLidY = (currentLid / 350) * h;
+      pesCtx.beginPath();
+      pesCtx.strokeStyle = "rgba(239, 68, 68, 0.7)"; // Red alert line
+      pesCtx.lineWidth = 2;
+      pesCtx.setLineDash([5, 5]);
+      pesCtx.moveTo(0, screenLidY);
+      pesCtx.lineTo(w, screenLidY);
+      pesCtx.stroke();
+      pesCtx.setLineDash([]); // Clear dash
+      
+      // Label the energy lid
+      pesCtx.fillStyle = "rgba(239, 68, 68, 0.9)";
+      pesCtx.font = "bold 9px monospace";
+      pesCtx.textAlign = "right";
+      pesCtx.fillText("ENERGY LID", w - 10, screenLidY - 6);
+      
+      // Render Walker Particle
+      let screenWalkerX = (walker.x / 600) * w;
+      let screenWalkerY = (walker.y / 350) * h;
+      
+      pesCtx.beginPath();
+      pesCtx.arc(screenWalkerX, screenWalkerY, 8, 0, Math.PI * 2);
+      
+      // Pulse animation
+      const pulseGrad = pesCtx.createRadialGradient(screenWalkerX, screenWalkerY, 1, screenWalkerX, screenWalkerY, 9);
+      pulseGrad.addColorStop(0, "#ffffff");
+      pulseGrad.addColorStop(0.3, "#06b6d4");
+      pulseGrad.addColorStop(1, "rgba(6, 182, 212, 0)");
+      
+      pesCtx.fillStyle = pulseGrad;
+      pesCtx.fill();
+    }
+    
+    // Draw Right Canvas (Disconnectivity Graph)
+    function drawTree() {
+      treeCtx.clearRect(0, 0, treeCanvas.width, treeCanvas.height);
+      const w = treeCanvas.width;
+      const h = treeCanvas.height;
+      
+      // Draw grid
+      treeCtx.strokeStyle = "rgba(255, 255, 255, 0.03)";
+      treeCtx.lineWidth = 1;
+      for (let x = 0; x < w; x += 30) {
+        treeCtx.beginPath();
+        treeCtx.moveTo(x, 0);
+        treeCtx.lineTo(x, h);
+        treeCtx.stroke();
+      }
+      
+      // Draw vertical Energy Axis
+      treeCtx.strokeStyle = "rgba(255,255,255,0.08)";
+      treeCtx.lineWidth = 1;
+      treeCtx.beginPath();
+      treeCtx.moveTo(35, 10);
+      treeCtx.lineTo(35, h - 20);
+      treeCtx.stroke();
+      
+      const isDark = document.documentElement.getAttribute('data-bs-theme') === 'dark';
+      treeCtx.fillStyle = isDark ? "rgba(255,255,255,0.35)" : "rgba(33, 37, 41, 0.55)";
+      treeCtx.font = "9px monospace";
+      treeCtx.textAlign = "center";
+      
+      // Draw Energy ticks
+      for (let y = 100; y <= 300; y += 40) {
+        let sy = (y / 350) * h;
+        treeCtx.beginPath();
+        treeCtx.moveTo(30, sy);
+        treeCtx.lineTo(40, sy);
+        treeCtx.stroke();
+        
+        let labelEnergy = (350 - y); // Arbitrary energy units showing higher is higher
+        treeCtx.fillText(labelEnergy, 18, sy + 3);
+      }
+      
+      // Draw Energy label vertical
+      treeCtx.save();
+      treeCtx.translate(10, h/2);
+      treeCtx.rotate(-Math.PI/2);
+      treeCtx.fillText("Energy (kJ/mol)", 0, 0);
+      treeCtx.restore();
+      
+      // Draw dynamic Active Connections
+      let currentBasin = getCurrentBasinName(walker.x);
+      
+      // Pre-calculate active connections according to lid
+      connections[2].active = (currentLid <= 130); // All connected (280 kJ grand barrier)
+      connections[0].active = connections[2].active; // III/IV (230 kJ) only active once grand barrier crossed
+      connections[1].active = (currentLid <= 160); // I and II connected (240 kJ)
+      
+      let conCount = 0;
+      connections.forEach(c => { if(c.active) conCount++; });
+      $("#connections-found").text(`Connections: ${conCount}/3`);
+      
+      // Map tree coordinates
+      function mapTreeX(tx) { return 45 + (tx / 360) * (w - 70); }
+      function mapTreeY(ty) { return (ty / 350) * h; }
+      
+      // Render branches
+      // Draw connections nodes
+      // Tree lines 
+      
+      // Form III and Form IV connection point
+      // Node 1: (260, 170)
+      let n1x = mapTreeX(260);
+      let n1y = mapTreeY(170);
+      
+      // Form I and Form II connection point
+      // Node 2: (100, 160)
+      let n2x = mapTreeX(100);
+      let n2y = mapTreeY(160);
+      
+      // Grand connection (All)
+      // Node 3: (180, 130)
+      let n3x = mapTreeX(180);
+      let n3y = mapTreeY(130);
+      
+      // Draw base terminal branches to nodes
+      drawBranch(mapTreeX(treeTerminals[3].x), mapTreeY(treeTerminals[3].y), n1x, n1y, connections[0].active);
+      drawBranch(mapTreeX(treeTerminals[2].x), mapTreeY(treeTerminals[2].y), n1x, n1y, connections[0].active);
+      
+      drawBranch(mapTreeX(treeTerminals[1].x), mapTreeY(treeTerminals[1].y), n2x, n2y, connections[1].active);
+      drawBranch(mapTreeX(treeTerminals[0].x), mapTreeY(treeTerminals[0].y), n2x, n2y, connections[1].active);
+      
+      // Draw Node to Node connection branches
+      drawBranch(n1x, n1y, n3x, n3y, connections[2].active);
+      drawBranch(n2x, n2y, n3x, n3y, connections[2].active);
+      
+      // Draw grand root stem upwards
+      drawBranch(n3x, n3y, n3x, mapTreeY(70), connections[2].active);
+      
+      // Draw terminals labels
+      treeTerminals.forEach(t => {
+        let sx = mapTreeX(t.x);
+        let sy = mapTreeY(t.y);
+        
+        // Highlight active walker terminal
+        let isActiveBasin = (t.name === currentBasin);
+        
+        treeCtx.fillStyle = isActiveBasin ? "#06b6d4" : (isDark ? "rgba(255,255,255,0.45)" : "rgba(33, 37, 41, 0.65)");
+        treeCtx.font = isActiveBasin ? "bold 10px sans-serif" : "9px sans-serif";
+        treeCtx.textAlign = "center";
+        treeCtx.fillText(t.name, sx, sy + 15);
+        
+        treeCtx.beginPath();
+        treeCtx.arc(sx, sy, isActiveBasin ? 5 : 3, 0, Math.PI * 2);
+        treeCtx.fillStyle = isActiveBasin ? "#06b6d4" : (isDark ? "rgba(255,255,255,0.2)" : "rgba(33, 37, 41, 0.15)");
+        treeCtx.fill();
+        if (isActiveBasin) {
+          treeCtx.strokeStyle = "rgba(6, 182, 212, 0.4)";
+          treeCtx.lineWidth = 3;
+          treeCtx.stroke();
+        }
+      });
+      
+      // Draw active node markers
+      drawNodeMarker(n1x, n1y, connections[0].active, "230 kJ");
+      drawNodeMarker(n2x, n2y, connections[1].active, "240 kJ");
+      drawNodeMarker(n3x, n3y, connections[2].active, "280 kJ");
+    }
+    
+    // Draw smooth branch lines on tree
+    function drawBranch(x1, y1, x2, y2, active) {
+      treeCtx.beginPath();
+      treeCtx.lineWidth = active ? 3 : 1.5;
+      treeCtx.strokeStyle = active ? "#6366f1" : "rgba(255,255,255,0.1)";
+      
+      // Nice bezier curve structure
+      treeCtx.moveTo(x1, y1);
+      treeCtx.bezierCurveTo(x1, (y1 + y2)/2, x2, (y1 + y2)/2, x2, y2);
+      treeCtx.stroke();
+    }
+    
+    // Draw transition node descriptors
+    function drawNodeMarker(x, y, active, label) {
+      treeCtx.beginPath();
+      treeCtx.arc(x, y, 4, 0, Math.PI * 2);
+      treeCtx.fillStyle = active ? "#06b6d4" : "rgba(255,255,255,0.15)";
+      treeCtx.fill();
+      
+      if (active) {
+        treeCtx.fillStyle = "rgba(6, 182, 212, 0.8)";
+        treeCtx.font = "9px monospace";
+        treeCtx.textAlign = "left";
+        treeCtx.fillText(label, x + 8, y + 3);
+      }
+    }
+    
+    // Monte Carlo simulation step logic
+    function runSimulationStep() {
+      statSteps++;
+      
+      // Generate step proposal dx
+      // Higher speed increases random step sizes
+      let maxStep = speed === 1 ? 8 : (speed === 2 ? 15 : 25);
+      let dx = (Math.random() - 0.5) * maxStep;
+      let newX = walker.x + dx;
+      
+      // Bound checking
+      if (newX < 60) newX = 60;
+      if (newX > 540) newX = 540;
+      
+      let newY = getPES_Energy(newX);
+      
+      // Threshold check: accepted if energy is below/equal to the Energy Lid
+      // (Which corresponds to newY >= currentLid in canvas coordinates)
+      if (newY >= currentLid) {
+        walker.x = newX;
+        walker.y = newY;
+        statAccepted++;
+      }
+      
+      // Update statistics panel
+      $("#stat-steps").text(statSteps);
+      $("#stat-accepted").text(statAccepted);
+      let rejectRate = Math.round(((statSteps - statAccepted) / statSteps) * 100);
+      $("#stat-reject").text(rejectRate + "%");
+      $("#stat-basin").text(getCurrentBasinName(walker.x));
+      
+      drawSimulation();
+    }
+    
+    // Dashboard slider controls
+    $("#lidSlider").on("input", function() {
+      // Map slider value (100 to 300) to actual canvas energy Y coordinates
+      // Since high slider means high energy, in canvas coords it means smaller Y!
+      // Slider: 100 -> Canvas Y: 290
+      // Slider: 300 -> Canvas Y: 110
+      let sliderVal = parseInt($(this).val());
+      
+      // Mathematical mapping
+      currentLid = 290 - ((sliderVal - 100) / 200) * 180;
+      
+      let displayEnergy = Math.round(sliderVal);
+      $("#lidVal").text(displayEnergy + " kJ/mol");
+      
+      drawSimulation();
+    });
+    
+    $("#speedSlider").on("input", function() {
+      speed = parseInt($(this).val());
+      let speedText = speed === 1 ? "Slow" : (speed === 2 ? "Medium" : "Fast");
+      $("#speedVal").text(speedText);
+      
+      // If running, restart timer to adjust speeds
+      if (isRunning) {
+        clearInterval(simInterval);
+        let intervalMs = speed === 1 ? 150 : (speed === 2 ? 60 : 20);
+        simInterval = setInterval(runSimulationStep, intervalMs);
+      }
+    });
+    
+    // Play / Pause Simulation
+    $("#btn-start-sim").click(function() {
+      if (isRunning) {
+        // Pause
+        clearInterval(simInterval);
+        isRunning = false;
+        $(this).html('<i class="fa-solid fa-play"></i> Run MCT Trajectory');
+        $("#sim-status").text("Paused").removeClass("bg-success text-success").addClass("bg-warning text-warning");
+      } else {
+        // Play
+        isRunning = true;
+        $(this).html('<i class="fa-solid fa-pause"></i> Pause');
+        $("#sim-status").text("Running").removeClass("bg-warning text-warning").addClass("bg-success text-success");
+        let intervalMs = speed === 1 ? 150 : (speed === 2 ? 60 : 20);
+        simInterval = setInterval(runSimulationStep, intervalMs);
+      }
+    });
+    
+    // Reset simulation
+    $("#btn-reset-sim").click(function() {
+      clearInterval(simInterval);
+      isRunning = false;
+      $("#btn-start-sim").html('<i class="fa-solid fa-play"></i> Run MCT Trajectory');
+      $("#sim-status").text("Idle").removeClass("bg-success bg-warning").addClass("text-muted");
+      
+      // Reset values
+      statSteps = 0;
+      statAccepted = 0;
+      walker.x = 120;
+      walker.y = 290;
+      
+      $("#stat-steps").text("0");
+      $("#stat-accepted").text("0");
+      $("#stat-reject").text("0%");
+      $("#stat-basin").text("Form I");
+      
+      drawSimulation();
+    });
+
+    // Listen for theme changes to dynamically redraw canvases
+    const observer = new MutationObserver(() => {
+      drawSimulation();
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-bs-theme'] });
+  }
+});
+</script>
