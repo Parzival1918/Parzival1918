@@ -2,8 +2,6 @@
   link: /
 - name: About me
   link: /about.html
-- name: My PhD
-  link: /phd.html
 - name: Publications
   link: /publications.html
 - name: Blog
