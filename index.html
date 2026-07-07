@@ -46,22 +46,30 @@ title: Home
     </div>
 
     <!-- CTA Grid -->
-    <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 animate-fade-in delay-5">
-      <a class="btn-premium" href="{{ '/about.html' | absolute_url }}">
-        <i class="fa-regular fa-user"></i> About me <i class="fa-solid fa-arrow-right ms-1"></i>
-      </a>
-      <a class="btn-premium-secondary" href="{{ '/projects.html' | absolute_url }}">
-        <i class="fa-solid fa-code"></i> Projects
-        <span class="badge-count">{{ site.data.projects | size }}</span>
-      </a>
-      <a class="btn-premium-secondary" href="{{ '/publications.html' | absolute_url }}">
-        <i class="fa-regular fa-file-lines"></i> Publications
-        <span class="badge-count">{{ site.data.publications | size }}</span>
-      </a>
-      <a class="btn-premium-secondary" href="{{ '/blog.html' | absolute_url }}">
-        <i class="fa-regular fa-comment"></i> Blog
-        <span class="badge-count">{{ site.data.blog | size }}</span>
-      </a>
+    <div class="row justify-content-center g-3 animate-fade-in delay-5">
+      <div class="col-12 col-md-6 col-lg-auto d-flex">
+        <a class="btn-premium w-100" href="{{ '/about.html' | absolute_url }}">
+          <i class="fa-regular fa-user"></i> About me <i class="fa-solid fa-arrow-right ms-1"></i>
+        </a>
+      </div>
+      <div class="col-12 col-md-6 col-lg-auto d-flex">
+        <a class="btn-premium-secondary w-100" href="{{ '/projects.html' | absolute_url }}">
+          <i class="fa-solid fa-code"></i> Projects
+          <span class="badge-count">{{ site.data.projects | size }}</span>
+        </a>
+      </div>
+      <div class="col-12 col-md-6 col-lg-auto d-flex">
+        <a class="btn-premium-secondary w-100" href="{{ '/publications.html' | absolute_url }}">
+          <i class="fa-regular fa-file-lines"></i> Publications
+          <span class="badge-count">{{ site.data.publications | size }}</span>
+        </a>
+      </div>
+      <div class="col-12 col-md-6 col-lg-auto d-flex">
+        <a class="btn-premium-secondary w-100" href="{{ '/blog.html' | absolute_url }}">
+          <i class="fa-regular fa-comment"></i> Blog
+          <span class="badge-count">{{ site.data.blog | size }}</span>
+        </a>
+      </div>
     </div>
 
   </div>
