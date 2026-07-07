@@ -50,6 +50,10 @@ title: Home
       <a class="btn-premium" href="{{ '/about.html' | absolute_url }}">
         <i class="fa-regular fa-user"></i> About me <i class="fa-solid fa-arrow-right ms-1"></i>
       </a>
+      <a class="btn-premium-secondary" href="{{ '/projects.html' | absolute_url }}">
+        <i class="fa-solid fa-code"></i> Projects
+        <span class="badge-count">{{ site.data.projects | size }}</span>
+      </a>
       <a class="btn-premium-secondary" href="{{ '/publications.html' | absolute_url }}">
         <i class="fa-regular fa-file-lines"></i> Publications
         <span class="badge-count">{{ site.data.publications | size }}</span>

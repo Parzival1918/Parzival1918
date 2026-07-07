@@ -1,0 +1,40 @@
+---
+title: Projects
+---
+
+<div class="animate-fade-in delay-1">
+  <h1 class="fw-bold text-gradient mb-4">Projects</h1>
+  
+  <p class="fs-6 text-secondary lh-lg mb-5">
+    Here are some of the open-source projects and tools I have developed. You can find more of my work on my <a class="text-decoration-none text-primary fw-semibold" href="{{ site.data.links.social.github }}" target="_blank">GitHub profile</a>.
+  </p>
+
+  <div class="row">
+    {% for project in site.data.projects %}
+    <div class="col-12 col-md-6 mb-4 animate-fade-in delay-2">
+      <div class="glass-card p-4 h-100 d-flex flex-column">
+        <div class="d-flex justify-content-between align-items-start mb-3 gap-2">
+          <h4 class="fw-bold mb-0 text-gradient d-flex align-items-center gap-2">
+            <i class="{{ project.icon }} text-primary"></i> {{ project.title }}
+          </h4>
+          <a class="badge badge-premium text-decoration-none" href="{{ project.url }}" target="_blank">
+            <i class="fa-brands fa-github me-1"></i> Repository <i class="fa-solid fa-arrow-up-right-from-square ms-1 small"></i>
+          </a>
+        </div>
+        
+        <p class="text-secondary mb-4 flex-grow-1 lh-lg">
+          {{ project.description }}
+        </p>
+
+        {% if project.tags %}
+        <div class="d-flex flex-wrap gap-2 mt-auto">
+          {% for tag in project.tags %}
+          <span class="badge badge-premium small"><i class="fa-solid fa-tag me-1"></i>{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
