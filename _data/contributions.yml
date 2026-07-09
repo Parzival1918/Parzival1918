@@ -1,11 +1,11 @@
-- title: "Added Support for Parsing Shelxl output files"
+- title: "Added support for parsing SHELXL output files"
   url: https://github.com/aligfellow/xyzrender/pull/158
   project: aligfellow/xyzrender
-  description: Added a new parser that can process the contents of Shelxl output files (.lst), extracting atomic coordinates and visualization metadata.
+  description: Added a new parser that can process the contents of SHELXL files, extracting atomic coordinates and unit cell data.
   date: "2026-07-08"
 
-- title: "Fixed Issue With Molecule Boundaries"
+- title: "Avoid molecules being split across periodic boundaries"
   url: https://github.com/aligfellow/xyzrender/pull/159
   project: aligfellow/xyzrender
-  description: Implemented a fix to prevent molecules from being split across periodic boundaries during visualization, improving visual coherence of crystal structures.
+  description: Implemented a fix to prevent molecules from being split across periodic boundaries during visualization, improving visual coherence of molecular crystal structures.
   date: "2026-07-08"
