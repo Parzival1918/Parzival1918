@@ -6,3 +6,14 @@
     - Python
     - Matplotlib
     - Data Visualization
+
+- title: monline
+  url: https://github.com/Parzival1918/monline
+  description: A beautiful, web-native molecular visualization tool powered by xyzrender and Pyodide. Generate publication-ready images of molecules and crystal structures directly from the website.
+  icon: fa-solid fa-atom
+  tags:
+    - Python
+    - xyzrender
+    - Pyodide
+    - Molecular Visualization
+    - Crystal Structure
