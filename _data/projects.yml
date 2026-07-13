@@ -17,3 +17,11 @@
     - Pyodide
     - Molecular Visualization
     - Crystal Structure
+
+- title: bookshelf
+  url: https://github.com/Parzival1918/bookshelf
+  description: A personal, online bookshelf to keep track of the books I read and want to read.
+  icon: fa-solid fa-book
+  tags:
+    - Reading
+    - Books
