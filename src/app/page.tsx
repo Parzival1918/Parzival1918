@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getYamlData } from '@/lib/data';
 import { GraduationCap } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaOrcid } from 'react-icons/fa6';
+import GlowCard from '@/components/GlowCard';
 
 export default function Home() {
   const projects = getYamlData<any[]>('projects.yml');
@@ -10,7 +11,7 @@ export default function Home() {
   const links = getYamlData<{ social: { github: string; scholar: string; orcid: string; linkedin: string } }>('links.yml');
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-500">
+    <div>
       
       {/* Hero Section */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 sm:pt-32 sm:pb-24 flex flex-col-reverse md:flex-row items-center justify-between gap-12">
@@ -63,7 +64,7 @@ export default function Home() {
 
       {/* Welcome Section */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl rounded-3xl p-8 sm:p-12 shadow-sm border border-slate-200/50 dark:border-slate-800/50">
+        <GlowCard className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl rounded-3xl p-8 sm:p-12 shadow-sm border border-slate-200/50 dark:border-slate-800/50">
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-slate-900 dark:text-white">Welcome to my space!</h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8 max-w-3xl">
             I explore the complex, fascinating energy landscapes of molecular crystals. Using advanced <strong className="text-blue-600 dark:text-blue-400 font-medium">Monte Carlo threshold algorithms</strong> and computational chemistry workflows, my research aims to push the boundaries of <strong className="text-purple-600 dark:text-purple-400 font-medium">crystal structure prediction</strong>. Feel free to explore my background, read my publications, or browse my projects!
@@ -85,7 +86,7 @@ export default function Home() {
               CV (PDF)
             </a>
           </div>
-        </div>
+        </GlowCard>
       </div>
     </div>
   );

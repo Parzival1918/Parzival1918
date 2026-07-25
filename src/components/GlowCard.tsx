@@ -29,7 +29,7 @@ export default function GlowCard({ children, className = '', ...props }: GlowCar
       <div
         className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 dark:hidden group-hover:opacity-100 z-0"
         style={{
-          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.7), transparent 40%)`,
+          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, 0.12), transparent 40%)`,
         }}
       />
       {/* Dark mode glow */}
