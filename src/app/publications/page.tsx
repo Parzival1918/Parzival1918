@@ -1,6 +1,6 @@
 import { getYamlData } from '@/lib/data';
 import { BookOpen, ExternalLink, FileText } from 'lucide-react';
-import Image from 'next/image';
+import GlowCard from '@/components/GlowCard';
 
 type Publication = {
   title: string;
@@ -27,25 +27,12 @@ export default function Publications() {
       
       <div className="space-y-8">
         {publications?.map((pub, idx) => (
-          <div 
+          <GlowCard 
             key={idx} 
-            className="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 dark:border-slate-800 hover:shadow-md transition-shadow"
+            className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/50 dark:border-slate-800/50 hover:shadow-md transition-shadow"
           >
             <div className="flex flex-col md:flex-row gap-6">
-              {pub.graphical_abstract && (
-                <div className="md:w-1/3 flex-shrink-0">
-                  <div className="relative w-full aspect-video md:aspect-square rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                    <Image
-                      src={pub.graphical_abstract}
-                      alt="Graphical Abstract"
-                      fill
-                      className="object-contain p-2"
-                    />
-                  </div>
-                </div>
-              )}
-              
-              <div className={pub.graphical_abstract ? "md:w-2/3" : "w-full"}>
+              <div className="w-full">
                 <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
                   {pub.title}
                 </h2>
@@ -87,7 +74,7 @@ export default function Publications() {
                 </div>
               </div>
             </div>
-          </div>
+          </GlowCard>
         ))}
       </div>
     </div>
