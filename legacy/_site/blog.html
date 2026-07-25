@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link href="http://localhost:4000/assets/css/main.css" rel="stylesheet">
+  
+  <!-- Immediate theme check to avoid screen flash on load -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-bs-theme', savedTheme);
+      } else {
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = systemPrefersDark ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-bs-theme', theme);
+      }
+    })();
+  </script>
+
+  <style>
+    /* Legacy Backward Compatibility Adapters mapped to Premium Styles */
+    .hoverable {
+      transition: var(--transition-smooth) !important;
+    }
+
+    .hoverable:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: var(--card-glass-shadow-hover) !important;
+      border-color: rgba(99, 102, 241, 0.25) !important;
+    }
+
+    .shaded {
+      box-shadow: var(--card-glass-shadow) !important;
+    }
+
+    .interactive_text {
+      position: relative;
+      display: inline-block;
+      transition: var(--transition-smooth);
+    }
+    
+    .interactive_text:before {
+      transition: var(--transition-smooth);
+      content: "[";
+      opacity: 0;
+      color: var(--bs-primary);
+      margin-right: 5px;
+      font-weight: 300;
+    }
+    
+    .interactive_text:after {
+      transition: var(--transition-smooth);
+      content: "]";
+      opacity: 0;
+      color: var(--bs-primary);
+      margin-left: 5px;
+      font-weight: 300;
+    }
+    
+    .interactive_text:hover {
+      transform: scale(1.02);
+    }
+    
+    .interactive_text:hover:before {
+      opacity: 1;
+    }
+    
+    .interactive_text:hover:after {
+      opacity: 1;
+    }
+
+    .interactive_btn:hover {
+      border-radius: 12px;
+      transform: translateY(-3px);
+      transition: var(--transition-smooth);
+      box-shadow: 0 10px 20px -10px rgba(99, 102, 241, 0.4);
+    }
+  </style>
+  <link rel="icon" type="image/png" href="http://localhost:4000/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="http://localhost:4000/assets/images/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/assets/images/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="http://localhost:4000/assets/images/favicon/site.webmanifest" />
+</head>
+  <body>
+    <!-- Decorative Premium Glow Blobs -->
+    <div class="glow-bg glow-bg-1"></div>
+    <div class="glow-bg glow-bg-2"></div>
+
+    <div class="sticky-top w-100 mb-4">
+  <nav class="navbar navbar-expand-sm navbar-glass">
+    <div class="container-lg">
+      <a class="navbar-brand d-flex align-items-center" href="http://localhost:4000/">
+        <span class="fs-4 fw-bold text-gradient">PJR</span>
+      </a>
+      
+      <div class="d-flex align-items-center order-sm-last">
+        <button class="theme-toggle-btn ms-2" id="theme-toggle" aria-label="Toggle theme">
+          <i class="fa-solid fa-sun sun-icon"></i>
+          <i class="fa-solid fa-moon moon-icon"></i>
+        </button>
+        
+        <button class="navbar-toggler ms-2 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-sm-0 align-items-sm-center">
+          
+          <li class="nav-item">
+            <a class="nav-link nav-link-premium "  href="http://localhost:4000/about.html">About me</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link nav-link-premium "  href="http://localhost:4000/projects.html">Projects</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link nav-link-premium "  href="http://localhost:4000/publications.html">Publications</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link nav-link-premium active" aria-current="page"  href="http://localhost:4000/blog.html">Blog</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+    <div class="container-lg flex-grow-1 my-4">
+      <div class="animate-fade-in delay-1">
+  <h1 class="fw-bold text-gradient mb-4">Blog</h1>
+
+  
+  
+  <!-- Sleek Placeholder Card for empty state -->
+  <div class="glass-card text-center p-5 my-4 animate-fade-in delay-2">
+    <div class="py-4">
+      <i class="fa-regular fa-folder-open text-primary display-3 mb-4 opacity-50"></i>
+      <h4 class="fw-bold text-gradient mb-3">No entries yet!</h4>
+      <p class="text-secondary mb-0 mx-auto" style="max-width: 500px;">
+        I haven't written any articles yet, but I'll soon be sharing my thoughts on computational chemistry, crystal structure predictions, molecular modeling, and scientific coding. Stay tuned!
+      </p>
+    </div>
+  </div>
+
+  
+</div>
+
+    </div>
+
+    <div class="container-fluid gx-0 mt-auto py-4 footer-glass">
+  <div class="container-lg">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-8 d-flex justify-content-center justify-content-md-start">
+        <p class="mb-0 text-secondary text-center">
+          © 2026 Pedro Juan Royo. Built with 
+          <a class="text-decoration-none text-primary fw-semibold" href="https://jekyllrb.com/" target="_blank">Jekyll</a>
+        </p>
+      </div>
+      <div class="col-12 col-md-4 mt-3 mt-md-0 d-flex justify-content-center justify-content-md-end gap-2">
+        <a class="footer-social-icon" href="https://scholar.google.com/citations?user=Cv8tC88AAAAJ&hl=en" target="_blank" title="Google Scholar">
+          <img src="http://localhost:4000/assets/icons/scholar.svg" alt="Google Scholar" width="20" height="20">
+        </a>
+        <a class="footer-social-icon" href="https://orcid.org/0009-0008-5419-1857" target="_blank" title="Orcid">
+          <img src="http://localhost:4000/assets/icons/orcid.svg" alt="Orcid" width="20" height="20">
+        </a>
+        <a class="footer-social-icon" href="https://github.com/Parzival1918" target="_blank" title="GitHub">
+          <img src="http://localhost:4000/assets/icons/github.svg" alt="GitHub" width="20" height="20">
+        </a>
+        <a class="footer-social-icon" href="https://uk.linkedin.com/in/pedro-juan-royo" target="_blank" title="LinkedIn">
+          <img src="http://localhost:4000/assets/icons/linkedin.svg" alt="LinkedIn" width="20" height="20">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+    <script src="http://localhost:4000/assets/js/popper.js"></script>
+<script src="http://localhost:4000/assets/js/bootstrap.js"></script>
+<script>
+    // Tooltips
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+    // Theme Switcher Logic
+    const getStoredTheme = () => localStorage.getItem('theme')
+    const setStoredTheme = theme => localStorage.setItem('theme', theme)
+
+    const getPreferredTheme = () => {
+        const storedTheme = getStoredTheme()
+        if (storedTheme) {
+            return storedTheme
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
+
+    const setTheme = theme => {
+        document.documentElement.setAttribute('data-bs-theme', theme)
+    }
+
+    // Initialize and bind theme toggler
+    window.addEventListener('DOMContentLoaded', () => {
+        setTheme(getPreferredTheme())
+
+        const toggleBtn = document.getElementById('theme-toggle');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-bs-theme')
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
+                setTheme(newTheme)
+                setStoredTheme(newTheme)
+            })
+        }
+        
+        // Scroll/Timeline Reveal Intersection Observer
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Once visible, stop observing this element
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, {
+            root: null,
+            threshold: 0.05,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        // Observe timeline items and card elements
+        const elementsToReveal = document.querySelectorAll('.timeline-item');
+        elementsToReveal.forEach(el => {
+            revealObserver.observe(el);
+        });
+        
+        // Activate timeline line drawing on scroll
+        const timeline = document.querySelector('.timeline');
+        if (timeline) {
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        timelineObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.05 });
+            timelineObserver.observe(timeline);
+        }
+    })
+</script>
+  </body>
+</html>

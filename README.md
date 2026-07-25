@@ -1,89 +1,36 @@
-Check my website [naujordep.com](https://naujordep.com)!
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-<div align="center">
+## Getting Started
 
-![GitHub followers](https://img.shields.io/github/followers/parzival1918)
-![GitHub User's stars](https://img.shields.io/github/stars/parzival1918)
+First, run the development server:
 
-</div>
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-### 🐍 pip cli programs
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-* [**bibman**](https://github.com/Parzival1918/bibman): Manage bibliography files in bibtex format
-  * Quick install `pipx install bibmancli`
-* [**wordle-helper**](https://github.com/Parzival1918/WordleHelper): Helps you find the wordle word of the day
-  * Quick install `pipx install wordle-helper-uc`
-* [**game-of-life**](https://github.com/Parzival1918/Conway-GameOfLife): Conway's game of life in the terminal
-  * Quick install `pipx install game-of-life-uc`
-* [**pu-pjr CLIs**](https://github.com/Parzival1918/Personal-Utilities): Utilities that I use for data analysis
-  * Quick install `pipx install pu-pjr`
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-Find them in my also in my PyPI profile [UnstrayCato](https://pypi.org/user/UnstrayCato/)
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### 🐍 pip packages
+## Learn More
 
-* [**barcodes_uc**](https://github.com/Parzival1918/barcodes-uc): Generate different types of barcodes. For now, only QR codes work.
-  * Quick install `pip install barcodes-uc`
-  * The package also installs the CLI `qrcode` to generate QR codes in the command line
-  * This package has been used to create an API, check it here: [https://qrgeneratorapi-1-c9139268.deta.app](https://qrgeneratorapi-1-c9139268.deta.app)
-  * An example of a QR code you can generate:
+To learn more about Next.js, take a look at the following resources:
 
-<p align="center" width=100%>
-  <img src="qr.png" width=35%>
-</p>
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Find them in my also in my PyPI profile [UnstrayCato](https://pypi.org/user/UnstrayCato/)
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### 🕸️ Web APIs
+## Deploy on Vercel
 
-I have done a few web APIs using the [fastAPI package](https://fastapi.tiangolo.com) in python and hosted them in [Deta Space](https://deta.space).
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-* [**qrgenerator-api**](https://qrgeneratorapi-1-c9139268.deta.app): Generate QR codes. It uses the barcodes-uc python package I wrote.
-  * Example: `curl -X 'GET' 'https://qrgeneratorapi-1-c9139268.deta.app/qrdata/testQr' -H 'accept: application/json'`
-* [**bricoheroes-api**](https://bricoheroesapi-1-w6650227.deta.app): Search information about the series Bricoheroes.
-  * Example: `curl -X 'GET' 'https://bricoheroesapi-1-w6650227.deta.app/episodi-aleatori?inclou_extres=false' -H 'accept: application/json'`
-<div align="center">
- 
-![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fbricoheroesapi-1-w6650227.deta.app%2Finfo-episodi%2Faleatori%3Finclou_extres%3Dfalse&query=%24.videoTitle&label=Bricoheroes)
-
-</div>
-
-* [**elbunquer-api**](https://elbunquerapi-1-n2878604.deta.app): Search infromation about the podcast episodes of El Búnquer from YouTube.
-  * Example: `curl -X 'GET' 'https://elbunquerapi-1-n2878604.deta.app/info-episodi/aleatori?inclou_extres=false' -H 'accept: application/json'`
-<div align="center">
- 
-![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Felbunquerapi-1-n2878604.deta.app%2Finfo-episodi%2Faleatori%3Finclou_extres%3Dfalse&query=%24.videoTitle&label=El%20B%C3%BAnquer)
-
-</div>
-
-
-### 🧑 Profile
-
-* **Nationality**: Catalan
-* **Student at**: University of Sheffield (3/4 of the way) MEng Materials Science and Engineering (Research Stream)
-* **CV**: [Here](CV.pdf)
-
-### 🎧 Music
-
-* [Tabibito no Uta](https://www.youtube.com/watch?v=QG8UZUahRbI) - Yuiko Ohara
-* [GLBTM (Studio Outtakes)](https://www.youtube.com/watch?v=YiZfLvLU5Jc) - Daft Punk
-
-### 🍿 Movies / Series / Podcasts
-
-* (CAT) [Bricoheroes](https://m.youtube.com/playlist?list=PLHF437Sz2MHoR-3YNtdCX7opSo93wqlGq) - Peyu i Jair Domínguez 
-* (CAT) [El Búnquer](https://m.youtube.com/playlist?list=PL5HwsHboiE9ngozgQ1ZkB9X4gnEwUcLR3) - Peyu, Jair Domínguez i Neus Rossell
-
-<!--
-**Parzival1918/Parzival1918** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

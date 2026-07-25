@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Publications</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link href="http://localhost:4000/assets/css/main.css" rel="stylesheet">
+  
+  <!-- Immediate theme check to avoid screen flash on load -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-bs-theme', savedTheme);
+      } else {
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = systemPrefersDark ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-bs-theme', theme);
+      }
+    })();
+  </script>
+
+  <style>
+    /* Legacy Backward Compatibility Adapters mapped to Premium Styles */
+    .hoverable {
+      transition: var(--transition-smooth) !important;
+    }
+
+    .hoverable:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: var(--card-glass-shadow-hover) !important;
+      border-color: rgba(99, 102, 241, 0.25) !important;
+    }
+
+    .shaded {
+      box-shadow: var(--card-glass-shadow) !important;
+    }
+
+    .interactive_text {
+      position: relative;
+      display: inline-block;
+      transition: var(--transition-smooth);
+    }
+    
+    .interactive_text:before {
+      transition: var(--transition-smooth);
+      content: "[";
+      opacity: 0;
+      color: var(--bs-primary);
+      margin-right: 5px;
+      font-weight: 300;
+    }
+    
+    .interactive_text:after {
+      transition: var(--transition-smooth);
+      content: "]";
+      opacity: 0;
+      color: var(--bs-primary);
+      margin-left: 5px;
+      font-weight: 300;
+    }
+    
+    .interactive_text:hover {
+      transform: scale(1.02);
+    }
+    
+    .interactive_text:hover:before {
+      opacity: 1;
+    }
+    
+    .interactive_text:hover:after {
+      opacity: 1;
+    }
+
+    .interactive_btn:hover {
+      border-radius: 12px;
+      transform: translateY(-3px);
+      transition: var(--transition-smooth);
+      box-shadow: 0 10px 20px -10px rgba(99, 102, 241, 0.4);
+    }
+  </style>
+  <link rel="icon" type="image/png" href="http://localhost:4000/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="http://localhost:4000/assets/images/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/assets/images/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="http://localhost:4000/assets/images/favicon/site.webmanifest" />
+</head>
+  <body>
+    <!-- Decorative Premium Glow Blobs -->
+    <div class="glow-bg glow-bg-1"></div>
+    <div class="glow-bg glow-bg-2"></div>
+
+    <div class="sticky-top w-100 mb-4">
+  <nav class="navbar navbar-expand-sm navbar-glass">
+    <div class="container-lg">
+      <a class="navbar-brand d-flex align-items-center" href="http://localhost:4000/">
+        <span class="fs-4 fw-bold text-gradient">PJR</span>
+      </a>
+      
+      <div class="d-flex align-items-center order-sm-last">
+        <button class="theme-toggle-btn ms-2" id="theme-toggle" aria-label="Toggle theme">
+          <i class="fa-solid fa-sun sun-icon"></i>
+          <i class="fa-solid fa-moon moon-icon"></i>
+        </button>
+        
+        <button class="navbar-toggler ms-2 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-sm-0 align-items-sm-center">
+          
+          <li class="nav-item">
+            <a class="nav-link nav-link-premium "  href="http://localhost:4000/about.html">About me</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link nav-link-premium "  href="http://localhost:4000/projects.html">Projects</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link nav-link-premium active" aria-current="page"  href="http://localhost:4000/publications.html">Publications</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link nav-link-premium "  href="http://localhost:4000/blog.html">Blog</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+    <div class="container-lg flex-grow-1 my-4">
+      <div class="animate-fade-in delay-1">
+  <h1 class="fw-bold text-gradient mb-4">Publications</h1>
+  
+  
+  <div class="glass-card mb-4 p-4 animate-fade-in delay-2">
+    <div class="row align-items-center">
+      
+      <div class="col-lg-8 col-12 order-lg-1 order-2 mt-lg-0 mt-4">
+      
+        <h5 class="fw-bold text-gradient mb-3">From Crystal Structure Prediction to Polymorphic Behaviour: Monte Carlo Threshold Mapping of Crystal Energy Landscapes</h5>
+        
+        <!-- Authors -->
+        <p class="text-secondary mb-2 small">
+          <i class="fa-regular fa-user me-2 text-primary"></i>
+          
+            
+              <strong class="text-primary">Pedro Juan Royo</strong>
+            
+            , 
+          
+            
+              Graeme M. Day
+            
+            
+          
+          <span class="ms-2 text-muted">(2026)</span>
+        </p>
+
+        <!-- Journal -->
+        <p class="text-secondary mb-3 small">
+          <i class="fa-regular fa-newspaper me-2 text-primary"></i>
+          <em>Chemical Science</em>
+        </p>
+
+        <!-- Links (DOI & Preprint) -->
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <a class="badge badge-premium text-decoration-none py-2 px-3 d-inline-flex align-items-center gap-2" href="https://doi.org/10.1039/D5SC08644B" target="_blank">
+            <i class="fa-solid fa-link"></i> DOI: 10.1039/D5SC08644B <i class="fa-solid fa-arrow-up-right-from-square ms-1 small text-muted"></i>
+          </a>
+          
+          <a class="badge badge-premium text-decoration-none py-2 px-3 d-inline-flex align-items-center gap-2" href="https://doi.org/10.26434/chemrxiv-2025-mx2tl-v2" target="_blank">
+            <i class="fa-solid fa-file-pdf"></i> Preprint: 10.26434/chemrxiv-2025-mx2tl-v2 <i class="fa-solid fa-arrow-up-right-from-square ms-1 small text-muted"></i>
+          </a>
+          
+        </div>
+
+        <!-- Abstract Trigger -->
+        <div class="d-flex justify-content-start">
+          <button class="btn-premium-secondary py-2 px-4 fs-6 rounded-3" 
+                  type="button" 
+                  data-bs-toggle="collapse" 
+                  data-bs-target="#abstract-1" 
+                  aria-expanded="false" 
+                  aria-controls="abstract-1"
+                  id="btn-abstract-1">
+            <i class="fa-regular fa-file-text me-2"></i> Show Abstract <i class="fa-solid fa-chevron-down ms-2 small" style="transition: transform 0.3s;"></i>
+          </button>
+        </div>
+
+        <!-- Collapsible Abstract -->
+        <div class="collapse" id="abstract-1">
+          <div class="abstract-panel mt-3">
+            <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-circle-info me-2"></i>Abstract</h6>
+            <p class="text-secondary mb-0 small lh-lg">
+              Crystal structure prediction has developed into a valuable tool for anticipating the likely crystalline arrangement that a molecule will adopt, with applications in materials discovery and polymorph screening. Although powerful, crystal structure prediction is usually limited to locating the local minima of the crystal energy surface. We demonstrate how, by mapping the energy barriers between structures, applying the Monte Carlo threshold algorithm provides a richer description of the crystal energy landscape which allows us to rationalize the differences in experimental conditions under which different crystal polymorphs are observed. As a demonstration, we apply the method to three polymorphic polycyclic aromatic hydrocarbons, phenanthrene, pyrene, and perylene.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      
+      <div class="col-lg-4 col-12 order-lg-2 order-1 text-center">
+        <div class="graphical-abstract-wrapper position-relative overflow-hidden rounded-3 shadow-sm">
+          <img src="http://localhost:4000/assets/images/publications/graphical_abstract_1.png" alt="Graphical Abstract for From Crystal Structure Prediction to Polymorphic Behaviour: Monte Carlo Threshold Mapping of Crystal Energy Landscapes" class="img-fluid w-100 h-auto d-block">
+          <!-- <div class="abstract-overlay">
+            <span class="badge bg-primary px-3 py-2 fs-6 shadow"><i class="fa-solid fa-magnifying-glass-plus me-2"></i>View Full</span>
+          </div> -->
+        </div>
+      </div>
+
+      <!-- Premium Modal for full graphical abstract viewing -->
+      <!-- <div class="modal fade" id="abstractModal-1" tabindex="-1" aria-labelledby="abstractModalLabel-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content glass-card p-2 border-0">
+            <div class="modal-header border-0 pb-0 justify-content-between">
+              <h6 class="modal-title fw-bold text-gradient" id="abstractModalLabel-1"><i class="fa-solid fa-image me-2 text-primary"></i>Graphical Abstract</h6>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center p-3">
+              <img src="http://localhost:4000/assets/images/publications/graphical_abstract_1.png" alt="Graphical Abstract for From Crystal Structure Prediction to Polymorphic Behaviour: Monte Carlo Threshold Mapping of Crystal Energy Landscapes" class="img-fluid rounded-3 max-vh-75 shadow">
+              <p class="text-secondary mt-3 small mb-0 fw-semibold">From Crystal Structure Prediction to Polymorphic Behaviour: Monte Carlo Threshold Mapping of Crystal Energy Landscapes</p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      
+
+    </div>
+  </div>
+  
+</div>
+
+<script>
+  // Dynamic rotation for chevron icons when collapsing abstracts
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    const collapseEl1 = document.getElementById('abstract-1');
+    const buttonEl1 = document.getElementById('btn-abstract-1');
+    
+    if (collapseEl1 && buttonEl1) {
+      collapseEl1.addEventListener('show.bs.collapse', () => {
+        buttonEl1.innerHTML = '<i class="fa-regular fa-file-text me-2"></i> Hide Abstract <i class="fa-solid fa-chevron-down ms-2 small" style="transform: rotate(180deg); transition: transform 0.3s;"></i>';
+      });
+      
+      collapseEl1.addEventListener('hide.bs.collapse', () => {
+        buttonEl1.innerHTML = '<i class="fa-regular fa-file-text me-2"></i> Show Abstract <i class="fa-solid fa-chevron-down ms-2 small" style="transform: rotate(0deg); transition: transform 0.3s;"></i>';
+      });
+    }
+    
+  });
+</script>
+
+    </div>
+
+    <div class="container-fluid gx-0 mt-auto py-4 footer-glass">
+  <div class="container-lg">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-8 d-flex justify-content-center justify-content-md-start">
+        <p class="mb-0 text-secondary text-center">
+          © 2026 Pedro Juan Royo. Built with 
+          <a class="text-decoration-none text-primary fw-semibold" href="https://jekyllrb.com/" target="_blank">Jekyll</a>
+        </p>
+      </div>
+      <div class="col-12 col-md-4 mt-3 mt-md-0 d-flex justify-content-center justify-content-md-end gap-2">
+        <a class="footer-social-icon" href="https://scholar.google.com/citations?user=Cv8tC88AAAAJ&hl=en" target="_blank" title="Google Scholar">
+          <img src="http://localhost:4000/assets/icons/scholar.svg" alt="Google Scholar" width="20" height="20">
+        </a>
+        <a class="footer-social-icon" href="https://orcid.org/0009-0008-5419-1857" target="_blank" title="Orcid">
+          <img src="http://localhost:4000/assets/icons/orcid.svg" alt="Orcid" width="20" height="20">
+        </a>
+        <a class="footer-social-icon" href="https://github.com/Parzival1918" target="_blank" title="GitHub">
+          <img src="http://localhost:4000/assets/icons/github.svg" alt="GitHub" width="20" height="20">
+        </a>
+        <a class="footer-social-icon" href="https://uk.linkedin.com/in/pedro-juan-royo" target="_blank" title="LinkedIn">
+          <img src="http://localhost:4000/assets/icons/linkedin.svg" alt="LinkedIn" width="20" height="20">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+    <script src="http://localhost:4000/assets/js/popper.js"></script>
+<script src="http://localhost:4000/assets/js/bootstrap.js"></script>
+<script>
+    // Tooltips
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+    // Theme Switcher Logic
+    const getStoredTheme = () => localStorage.getItem('theme')
+    const setStoredTheme = theme => localStorage.setItem('theme', theme)
+
+    const getPreferredTheme = () => {
+        const storedTheme = getStoredTheme()
+        if (storedTheme) {
+            return storedTheme
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
+
+    const setTheme = theme => {
+        document.documentElement.setAttribute('data-bs-theme', theme)
+    }
+
+    // Initialize and bind theme toggler
+    window.addEventListener('DOMContentLoaded', () => {
+        setTheme(getPreferredTheme())
+
+        const toggleBtn = document.getElementById('theme-toggle');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-bs-theme')
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
+                setTheme(newTheme)
+                setStoredTheme(newTheme)
+            })
+        }
+        
+        // Scroll/Timeline Reveal Intersection Observer
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Once visible, stop observing this element
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, {
+            root: null,
+            threshold: 0.05,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        // Observe timeline items and card elements
+        const elementsToReveal = document.querySelectorAll('.timeline-item');
+        elementsToReveal.forEach(el => {
+            revealObserver.observe(el);
+        });
+        
+        // Activate timeline line drawing on scroll
+        const timeline = document.querySelector('.timeline');
+        if (timeline) {
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        timelineObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.05 });
+            timelineObserver.observe(timeline);
+        }
+    })
+</script>
+  </body>
+</html>
