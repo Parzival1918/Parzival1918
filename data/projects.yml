@@ -25,3 +25,14 @@
   tags:
     - Reading
     - Books
+
+- title: marimol
+  url: https://github.com/Parzival1918/marimol
+  description: A molecular visualizer for marimo notebooks, enabling interactive 3D rendering and inspection of molecular structures directly in reactive Python notebooks.
+  icon: fa-solid fa-atom
+  tags:
+    - Python
+    - marimo
+    - Molecular Visualization
+    - anywidget
+
